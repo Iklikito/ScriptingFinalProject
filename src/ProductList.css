@@ -1,0 +1,125 @@
+@import url("https://fonts.googleapis.com/css2?family=Raleway&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  padding-bottom: 50px;
+}
+
+/* ------------------------------------------------------------------------------------- */
+
+.cardWrapper {
+  height: 370px;
+  width: 350px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: box-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+.cardWrapper:hover {
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.productListCartButton {
+  position: absolute;
+  bottom: 0px;
+  right: 10px;
+  width: 50px;
+  height: 50px;
+  display: none;
+  background-color: transparent;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
+
+.productListCartButton.dark {
+  filter: brightness(50%);
+}
+
+.cartIconImage {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.imageContainer {
+  position: relative;
+  height: 280px;
+  width: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.cardWrapper:hover .productListCartButton {
+  display: block;
+}
+
+.clothingImage {
+  height: 230px;
+  width: 300px;
+}
+
+.clothingImageDark {
+  height: 230px;
+  width: 300px;
+  filter: brightness(50%);
+}
+
+.clothingInfo {
+  width: 300px;
+  height: 45px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+  font-family: "Raleway", sans-serif;
+}
+.clothingTitle {
+  font-size: 13px;
+  margin-top: 5px;
+  color: rgba(0, 0, 0, 0.58);
+}
+.clothingPrice {
+  font-size: 15px;
+}
+
+/* ------------------------------------------------------------------------------------- */
+
+.clothingCardWrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.clothingCardWrapperDark {
+  display: flex;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.productGridBlock {
+  display: flex;
+  flex-direction: column;
+  width: fit-content;
+}
+
+.categoryTitle {
+  font-size: 28px;
+  font-family: "Raleway", sans-serif;
+  margin-bottom: 30px;
+  font-weight: lighter;
+}
+
+.productListContainer {
+  display: grid;
+  grid-template-columns: repeat(3, 350px);
+  gap: 30px;
+}
+/* ------------------------------------------------------------------------------------- */

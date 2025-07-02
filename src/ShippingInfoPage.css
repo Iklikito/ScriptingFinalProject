@@ -1,0 +1,114 @@
+.shipping-checkout-container {
+  display: flex;
+  flex-direction: column;
+  max-width: 100%;
+  width: 100%;
+  background-color: #fff;
+  overflow: hidden;
+}
+
+.shipping-page-content {
+  display: flex;
+  padding-left: 10%;
+  gap: 40px;
+  flex-wrap: nowrap;
+}
+
+.shipping-form-section {
+  flex: 1;
+}
+
+h3 {
+  margin: 0;
+}
+
+.shipping-form-title {
+  margin-top: 30px;
+  margin-bottom: 20px;
+  color: #333;
+  font-size: 1.8em;
+}
+
+.shipping-form-group {
+  margin-bottom: 15px;
+}
+
+.shipping-form-label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: #555;
+}
+
+.shipping-form-input {
+  width: 100%;
+  padding: 12px 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 1em;
+  box-sizing: border-box;
+}
+
+.shipping-input-error {
+  border-color: red;
+}
+
+.shipping-error-message {
+  color: red;
+  font-size: 0.85em;
+  margin-top: 5px;
+}
+
+.shipping-form-row {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 15px;
+}
+
+.shipping-half-width {
+  flex: 1;
+}
+
+.shipping-third-width {
+  flex: 1;
+}
+
+.shipping-checkbox-group {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
+.shipping-checkbox-input {
+  margin-right: 10px;
+  transform: scale(1.2);
+}
+
+.shipping-form-actions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 30px;
+  align-items: center;
+}
+
+.shipping-back-button {
+  background: none;
+  border: none;
+  color: #28a745;
+  cursor: pointer;
+  font-size: 1em;
+  padding: 10px 15px;
+  transition: color 0.3s ease;
+}
+
+.shipping-primary-button {
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 12px 25px;
+  font-size: 1.1em;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}

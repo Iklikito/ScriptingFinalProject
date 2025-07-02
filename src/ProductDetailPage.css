@@ -1,0 +1,128 @@
+.product-detail-page {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  margin-top: 40px;
+}
+
+@media (min-width: 768px) {
+  .product-detail-page {
+    flex-direction: row;
+  }
+}
+
+.image-section {
+  display: flex;
+  gap: 1rem;
+}
+
+.thumbnails {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.thumbnail {
+  width: 56px;
+  height: 56px;
+  object-fit: cover;
+  border: 1px solid #ccc;
+  cursor: pointer;
+}
+
+.main-image {
+  width: 400px;
+  height: 400px;
+  object-fit: cover;
+}
+
+.product-info {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  max-width: 400px;
+}
+
+.product-title {
+  font-size: 1.75rem;
+  font-weight: 600;
+  margin: 0;
+}
+
+.product-subtitle {
+  color: #555;
+  margin: 0.25rem 0 0.5rem;
+  font-size: 1.75rem;
+}
+
+.size-block {
+  margin-bottom: 1rem;
+}
+
+.prodict-page-size-label {
+  font-size: 0.9rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  color: #000;
+}
+
+.size-options {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.product-page-size-button {
+  padding: 0.5rem 1rem;
+  border: 1px solid #000;
+  background-color: white;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.product-page-size-button.active {
+  background-color: black;
+  color: white;
+}
+
+.price-block {
+  margin-top: 20%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.price-label {
+  font-size: 0.9rem;
+  font-weight: bold;
+  color: #000;
+  margin: 0;
+  padding: 0;
+}
+
+.price-value {
+  font-size: 1.25rem;
+  font-weight: bold;
+  color: #000;
+}
+
+.add-to-cart-btn {
+  padding: 0.75rem;
+  background-color: #2ecc71;
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.add-to-cart-btn:hover {
+  background-color: #27ae60;
+}
+
+.product-description {
+  font-size: 0.75rem;
+  color: #777;
+  line-height: 1.4;
+}

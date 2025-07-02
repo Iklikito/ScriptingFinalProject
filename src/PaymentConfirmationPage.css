@@ -1,0 +1,71 @@
+/* PaymentConfirmationPage.css */
+
+.checkout-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  background-color: #fff;
+  overflow: hidden;
+}
+
+.page-content {
+  display: flex;
+  padding: 30px;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+.form-section {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.confirmation-message {
+  text-align: center;
+  padding: 50px 20px;
+}
+
+.confirmation-title {
+  color: #28a745;
+  font-size: 1.5em;
+  margin-bottom: 15px;
+}
+
+.order-id {
+  font-size: 1em;
+  color: #555;
+  margin-bottom: 30px;
+}
+
+.thank-you-message {
+  font-size: 1em;
+  color: #666;
+  line-height: 1.6;
+  margin-bottom: 40px;
+}
+
+.confirmation-actions {
+  display: flex;
+  justify-content: center;
+  padding-top: 20px;
+}
+
+.primary-button {
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 12px 25px;
+  font-size: 1.1em;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.checkmark-icon {
+  width: 80px;
+  height: 80px;
+  margin-bottom: 20px;
+}

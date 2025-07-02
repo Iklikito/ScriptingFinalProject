@@ -1,0 +1,137 @@
+.checkout-container {
+  display: flex;
+  flex-direction: column;
+  max-width: 100%;
+  width: 100%;
+  background-color: #fff;
+  overflow: hidden;
+}
+
+.page-content {
+  display: flex;
+  padding-left: 10%;
+  gap: 40px;
+  flex-wrap: nowrap;
+}
+
+.form-section {
+  flex: 1;
+  min-width: 300px;
+  padding-bottom: 30px;
+}
+
+.form-title {
+  margin-bottom: 20px;
+  color: #333;
+  font-size: 1.8em;
+}
+
+.form-subtitle {
+  margin-top: 30px;
+  margin-bottom: 20px;
+  color: #444;
+  font-size: 1.4em;
+}
+
+.info-box {
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  margin-bottom: 30px;
+  overflow: hidden;
+}
+
+.info-row {
+  padding: 15px;
+  display: flex;
+  align-items: baseline;
+}
+
+.border-top {
+  border-top: 1px solid #eee;
+}
+
+.info-label {
+  font-weight: normal;
+  color: #888;
+  margin-right: 10px;
+}
+
+.info-value {
+  color: #333;
+}
+
+.shipping-option {
+  display: flex;
+  align-items: center;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 15px;
+  margin-bottom: 15px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.shipping-option.selected {
+  border-color: #28a745;
+  background-color: #e6ffe6;
+}
+
+.shipping-option-radio {
+  margin-right: 15px;
+  transform: scale(1.3);
+  accent-color: #28a745;
+}
+
+.shipping-option-details {
+  flex-grow: 1;
+}
+
+.shipping-method-name {
+  font-weight: bold;
+  font-size: 1.1em;
+}
+
+.shipping-method-description {
+  font-size: 0.9em;
+  color: #666;
+}
+
+.shipping-method-price {
+  font-weight: bold;
+  font-size: 1.1em;
+  color: #333;
+}
+
+.error-message {
+  color: red;
+  font-size: 0.85em;
+  margin-top: 5px;
+}
+
+.form-actions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 30px;
+  align-items: center;
+}
+
+.back-button {
+  background: none;
+  border: none;
+  color: #28a745;
+  cursor: pointer;
+  font-size: 1em;
+  padding: 10px 15px;
+  transition: color 0.3s ease;
+}
+
+.primary-button {
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 12px 25px;
+  font-size: 1.1em;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}

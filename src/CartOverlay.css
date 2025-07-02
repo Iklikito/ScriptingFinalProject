@@ -1,0 +1,139 @@
+.cart-overlay {
+  position: absolute;
+  top: 40px;
+  right: 0px;
+  width: 300px;
+  height: 60vh;
+  background: white;
+  display: flex;
+  flex-direction: column;
+  padding: 16px;
+  font-size: 13px;
+  z-index: 999;
+}
+
+.cart-title {
+  font-weight: bold;
+  margin-bottom: 12px;
+}
+
+.cart-body {
+  flex-grow: 1;
+  overflow-y: auto;
+  margin-bottom: 16px;
+}
+
+.cart-item {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 16px;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 12px;
+}
+
+.cart-item-info {
+  flex: 1;
+}
+
+.cart-item-name {
+  font-weight: 500;
+}
+
+.cart-item-price {
+  font-weight: 600;
+  margin: 4px 0;
+}
+
+.cart-size-buttons {
+  display: flex;
+  gap: 4px;
+}
+
+.size-button {
+  padding: 2px 6px;
+  border: 1px solid black;
+  background: white;
+  font-size: 11px;
+  cursor: pointer;
+}
+
+.size-button.selected {
+  background: black;
+  color: white;
+}
+
+.cart-controls {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  gap: 4px;
+}
+
+.cart-controls button {
+  width: 22px;
+  height: 22px;
+  font-size: 14px;
+  border: 1px solid black;
+  background: white;
+  cursor: pointer;
+}
+
+.quantity {
+  font-size: 13px;
+}
+
+.cart-item-image {
+  width: 70px;
+  height: auto;
+  object-fit: cover;
+}
+
+.cart-footer {
+  border-top: 1px solid #ddd;
+  padding-top: 12px;
+}
+
+.cart-total {
+  display: flex;
+  justify-content: space-between;
+  font-weight: bold;
+  margin-bottom: 12px;
+}
+
+.cart-buttons {
+  display: flex;
+  justify-content: space-between;
+}
+
+.size-label {
+  margin-top: 6px;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.view-bag-btn,
+.checkout-btn {
+  padding: 6px 12px;
+  font-size: 13px;
+  cursor: pointer;
+  width: 48%;
+}
+
+.view-bag-btn {
+  border: 1px solid black;
+  background: white;
+}
+
+.checkout-btn {
+  border: none;
+  background: #556359;
+  color: white;
+  transition: 0.3s;
+}
+
+.checkout-btn.active {
+  background: #5ece7b;
+  transition: 0.3s;
+}

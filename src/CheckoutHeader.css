@@ -1,0 +1,35 @@
+.checkout-header-wrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 70px 0 0 0;
+}
+
+.breadcrumb-container {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  font-size: 0.95em;
+  color: #28a745;
+}
+
+.breadcrumb-link {
+  text-decoration: none;
+  color: #28a745;
+  cursor: pointer;
+  margin-right: 5px;
+}
+
+.breadcrumb-arrow {
+  margin: 0 5px;
+  color: #bbb;
+}
+
+.breadcrumb-current {
+  color: #000;
+  font-weight: normal;
+}
+
+.breadcrumb-future {
+  color: #bbb;
+  cursor: default;
+}

@@ -1,0 +1,175 @@
+.cart-page {
+  max-width: 80%; /* Adjust based on your preferred width */
+  margin: 40px auto; /* Reduced margin for less space around */
+  padding: 0 20px; /* Add some horizontal padding */
+}
+
+.cart-page-title {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 30px; /* Space below the title */
+}
+
+.cart-page-body {
+  border-top: 1px solid #e0e0e0; /* Separator line */
+  padding-top: 30px;
+}
+
+.cart-page-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start; /* Align items to the start of the cross-axis */
+  padding: 20px 0;
+  border-bottom: 1px solid #e0e0e0; /* Separator between items */
+}
+
+.cart-page-item-info {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 10px; /* Space between info elements */
+}
+
+.cart-page-item-name {
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.cart-page-item-price {
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.cart-page-size-label {
+  font-size: 16px;
+  font-weight: 500;
+  margin-top: 10px; /* Space above size label */
+}
+
+.cart-page-size-buttons {
+  display: flex;
+  gap: 8px; /* Space between size buttons */
+}
+
+.cart-page-size-button {
+  background-color: white;
+  border: 1px solid black;
+  padding: 8px 12px;
+  cursor: pointer;
+  font-size: 14px;
+  min-width: 40px; /* Ensure buttons have a minimum width */
+  text-align: center;
+}
+
+.cart-page-size-button.selected {
+  background-color: black;
+  color: white;
+}
+
+/* Update this section */
+.cart-quantity-controls-and-image {
+  display: flex;
+  align-items: flex-start; /* Keep this to align the group to the top of its parent .cart-page-item */
+  gap: 20px;
+  position: relative; /* For positioning carousel buttons */
+}
+
+.cart-page-controls {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* NEW: Distributes items evenly; first item at the start, last at the end */
+  align-items: center;
+  /* gap: 10px; -- REMOVE THIS GAP, as justify-content will handle spacing */
+  margin-top: 0; /* Ensure no extra top margin */
+  height: 200px; /* NEW: Match the image height */
+}
+
+.cart-page-controls button {
+  background-color: white;
+  border: 1px solid black;
+  width: 40px; /* Square buttons */
+  height: 40px;
+  font-size: 20px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.cart-controls .quantity {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.cart-page-item-image {
+  width: 200px; /* Keep this as the desired image size */
+  height: 200px; /* Keep this as the desired image size */
+  object-fit: cover;
+}
+
+.image-carousel-buttons {
+  position: absolute;
+  bottom: 10px; /* Adjust as needed */
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 5px;
+}
+
+.carousel-button {
+  background: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  padding: 5px 8px;
+  cursor: pointer;
+  font-size: 14px;
+  line-height: 1; /* For better vertical alignment of text */
+}
+
+.cart-page-footer {
+  padding-top: 30px;
+  margin-top: 30px; /* Space from the last item */
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* CHANGE THIS: Align to the left */
+}
+
+.cart-quantity-and-total {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  margin-bottom: 20px; /* Space below total */
+  align-items: flex-start; /* CHANGE THIS: Align to the left */
+}
+
+.cart-total-quantity,
+.cart-total-price {
+  display: flex;
+  justify-content: space-between;
+  width: 150px; /* Adjust width of total/quantity display */
+}
+
+.quantity-label,
+.total-label {
+  font-weight: 500;
+  font-size: 16px;
+}
+
+.quantity-value,
+.total-value {
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.continue-button {
+  background-color: #5ece7b; /* Green color from the image */
+  color: white;
+  border: none;
+  padding: 15px 40px;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+  text-transform: uppercase;
+  width: 250px; /* Set a fixed width for the button */
+}
