@@ -82,7 +82,7 @@ const CartOverlay = () => {
                   +
                 </button>
                 <div className="quantity">
-                  {sharedData.cartItems[itemId].quantity}
+                  {sharedData.cartItems[index].quantity}
                 </div>
                 <button
                   onClick={() => {
