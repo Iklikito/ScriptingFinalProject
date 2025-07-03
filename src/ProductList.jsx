@@ -54,13 +54,13 @@ const ClothingCard = ({ itemId, image, title, price, showOverlay }) => {
                   ) {
                     merged = true;
                     return {
-                      id: itemId,
+                      id: otherItemId,
                       quantity: otherItemQuantity + 1,
                       size: otherItemSize,
                     };
                   }
                   return {
-                    id: itemId,
+                    id: otherItemId,
                     quantity: otherItemQuantity,
                     size: otherItemSize,
                   };
