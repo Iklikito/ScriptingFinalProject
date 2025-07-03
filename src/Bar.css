@@ -12,6 +12,7 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: start;
+  text-align: center;
 }
 nav {
   height: 100px;
