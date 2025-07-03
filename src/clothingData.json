@@ -13,18 +13,6 @@
   },
   {
     "id": 1,
-    "image": "/navBarCartButton.png",
-    "title": "Mercury",
-    "price": "89.00",
-    "category": "women",
-    "type": "Running Shoes",
-    "gallery": ["/navBarCartButton.png"],
-    "sizes": ["S", "M", "L"],
-    "defaultsize": "M",
-    "description": "Some description..."
-  },
-  {
-    "id": 2,
     "image": "/K2SurvivorJacket0.png",
     "title": "K2 Survivor Jacket",
     "price": "60.00",
@@ -40,7 +28,7 @@
     "description": "Engineered for resilience and built for extremes, the K2 Survivor Jacket is your ultimate companion in harsh alpine conditions. Designed with advanced thermal insulation, water-resistant shell fabric, and reinforced windproof seams, it provides maximum protection without sacrificing breathability or mobility. Whether you're scaling icy peaks or navigating urban winters, this jacket keeps you warm, dry, and unstoppable. Complete with utility pockets, adjustable cuffs, and a storm-ready hood, the K2 Survivor delivers performance you can count on when it matters most."
   },
   {
-    "id": 3,
+    "id": 2,
     "image": "/herasDress0.png",
     "title": "Hera Summer Dress",
     "price": "72.00",
@@ -57,7 +45,7 @@
     "description": "Flowing and elegant, the Hera Summer Dress is perfect for warm days and sunset evenings. Lightweight fabric with a flattering silhouette."
   },
   {
-    "id": 4,
+    "id": 3,
     "image": "/springForce0.png",
     "title": "Spring Force Shoes",
     "price": "50.00",
@@ -76,7 +64,7 @@
     "description": ""
   },
   {
-    "id": 5,
+    "id": 4,
     "image": "/ForestForgeHoodie0.png",
     "title": "ForestForge Hoodie",
     "price": "70.00",
@@ -93,7 +81,7 @@
     "description": "Built for comfort, shaped by nature. The ForestForge Hoodie channels the strength and calm of the deep woods with its rich dark green tone and rugged construction. Made from heavyweight cotton-blend fleece, it’s designed to keep you warm through crisp mornings and late-night fires. Featuring a structured hood, durable stitching, and a relaxed fit, this hoodie is as dependable as your favorite trail."
   },
   {
-    "id": 6,
+    "id": 5,
     "image": "/VelvetRaySunglasses0.png",
     "title": "Velvet Ray",
     "price": "18.00",
@@ -109,27 +97,15 @@
     "defaultsize": "S"
   },
   {
-    "id": 7,
-    "image": "/exampleHoodie.png",
-    "title": "Zeus Hoodie",
-    "price": "65.00",
-    "category": "men",
-    "type": "Nonexistent Hoodie",
-    "gallery": ["/exampleHoodie.png"],
-    "sizes": ["S", "M", "L"],
-    "defaultsize": "M",
-    "description": "Some description..."
-  },
-  {
-    "id": 8,
-    "image": "/exampleHoodie.png",
-    "title": "Zeus Hoodie Two",
-    "price": "65.00",
+    "id": 6,
+    "image": "/GiggleThreads0.png",
+    "title": "Giggle Threads",
+    "price": "80.00",
     "category": "kids",
-    "type": "what?",
-    "gallery": ["/exampleHoodie.png"],
+    "type": "Kids Tshirt",
+    "gallery": ["/GiggleThreads0.png", "/GiggleThreads1.png"],
     "sizes": ["S", "M", "L"],
     "defaultsize": "M",
-    "description": "Some description..."
+    "description": "Made for playdates, snack breaks, and silly adventures, the GiggleThreads T-shirt brings color and comfort to every moment. Crafted from ultra-soft cotton with a tag-free neckline, it keeps kids comfy while they explore, laugh, and imagine all day long. Bright colors, durable stitching, and maximum giggle potential included."
   }
 ]

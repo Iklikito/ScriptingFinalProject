@@ -118,7 +118,7 @@ const CartPage = () => {
                     </button>
                   </div>
                   <img
-                    src={clothingData[itemId].gallery[0]} // Using the first image from gallery
+                    src={clothingData[itemId].gallery[0]}
                     alt={clothingData[itemId].title}
                     className="cart-page-item-image"
                   />

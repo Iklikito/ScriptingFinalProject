@@ -30,7 +30,7 @@ const ProductDetailPage = () => {
 
   return (
     <>
-      <Bar />
+      <Bar showOverlay={false} setShowOverlay={() => {}} />
       <div className="product-detail-page">
         <div className="image-section">
           <div className="thumbnails">

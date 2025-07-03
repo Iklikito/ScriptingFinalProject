@@ -1,33 +1,33 @@
 .cart-page {
-  max-width: 80%; /* Adjust based on your preferred width */
-  margin: 40px auto; /* Reduced margin for less space around */
-  padding: 0 20px; /* Add some horizontal padding */
+  max-width: 80%;
+  margin: 40px auto;
+  padding: 0 20px;
 }
 
 .cart-page-title {
   font-size: 24px;
   font-weight: bold;
-  margin-bottom: 30px; /* Space below the title */
+  margin-bottom: 30px;
 }
 
 .cart-page-body {
-  border-top: 1px solid #e0e0e0; /* Separator line */
+  border-top: 1px solid #e0e0e0;
   padding-top: 30px;
 }
 
 .cart-page-item {
   display: flex;
   justify-content: space-between;
-  align-items: flex-start; /* Align items to the start of the cross-axis */
+  align-items: flex-start;
   padding: 20px 0;
-  border-bottom: 1px solid #e0e0e0; /* Separator between items */
+  border-bottom: 1px solid #e0e0e0;
 }
 
 .cart-page-item-info {
   flex-grow: 1;
   display: flex;
   flex-direction: column;
-  gap: 10px; /* Space between info elements */
+  gap: 10px;
 }
 
 .cart-page-item-name {
@@ -43,12 +43,12 @@
 .cart-page-size-label {
   font-size: 16px;
   font-weight: 500;
-  margin-top: 10px; /* Space above size label */
+  margin-top: 10px;
 }
 
 .cart-page-size-buttons {
   display: flex;
-  gap: 8px; /* Space between size buttons */
+  gap: 8px;
 }
 
 .cart-page-size-button {
@@ -57,7 +57,7 @@
   padding: 8px 12px;
   cursor: pointer;
   font-size: 14px;
-  min-width: 40px; /* Ensure buttons have a minimum width */
+  min-width: 40px;
   text-align: center;
 }
 
@@ -66,28 +66,26 @@
   color: white;
 }
 
-/* Update this section */
 .cart-quantity-controls-and-image {
   display: flex;
-  align-items: flex-start; /* Keep this to align the group to the top of its parent .cart-page-item */
+  align-items: flex-start;
   gap: 20px;
-  position: relative; /* For positioning carousel buttons */
+  position: relative;
 }
 
 .cart-page-controls {
   display: flex;
   flex-direction: column;
-  justify-content: space-between; /* NEW: Distributes items evenly; first item at the start, last at the end */
+  justify-content: space-between;
   align-items: center;
-  /* gap: 10px; -- REMOVE THIS GAP, as justify-content will handle spacing */
-  margin-top: 0; /* Ensure no extra top margin */
-  height: 200px; /* NEW: Match the image height */
+  margin-top: 0;
+  height: 200px;
 }
 
 .cart-page-controls button {
   background-color: white;
   border: 1px solid black;
-  width: 40px; /* Square buttons */
+  width: 40px;
   height: 40px;
   font-size: 20px;
   cursor: pointer;
@@ -102,14 +100,14 @@
 }
 
 .cart-page-item-image {
-  width: 200px; /* Keep this as the desired image size */
-  height: 200px; /* Keep this as the desired image size */
+  width: 200px;
+  height: 200px;
   object-fit: cover;
 }
 
 .image-carousel-buttons {
   position: absolute;
-  bottom: 10px; /* Adjust as needed */
+  bottom: 10px;
   left: 50%;
   transform: translateX(-50%);
   display: flex;
@@ -123,15 +121,15 @@
   padding: 5px 8px;
   cursor: pointer;
   font-size: 14px;
-  line-height: 1; /* For better vertical alignment of text */
+  line-height: 1;
 }
 
 .cart-page-footer {
   padding-top: 30px;
-  margin-top: 30px; /* Space from the last item */
+  margin-top: 30px;
   display: flex;
   flex-direction: column;
-  align-items: flex-start; /* CHANGE THIS: Align to the left */
+  align-items: flex-start;
 }
 
 .cart-quantity-and-total {
@@ -139,15 +137,15 @@
   display: flex;
   flex-direction: column;
   gap: 5px;
-  margin-bottom: 20px; /* Space below total */
-  align-items: flex-start; /* CHANGE THIS: Align to the left */
+  margin-bottom: 20px;
+  align-items: flex-start;
 }
 
 .cart-total-quantity,
 .cart-total-price {
   display: flex;
   justify-content: space-between;
-  width: 150px; /* Adjust width of total/quantity display */
+  width: 150px;
 }
 
 .quantity-label,
@@ -163,7 +161,7 @@
 }
 
 .continue-button {
-  background-color: #5ece7b; /* Green color from the image */
+  background-color: #5ece7b;
   color: white;
   border: none;
   padding: 15px 40px;
@@ -171,5 +169,5 @@
   font-weight: bold;
   cursor: pointer;
   text-transform: uppercase;
-  width: 250px; /* Set a fixed width for the button */
+  width: 250px;
 }

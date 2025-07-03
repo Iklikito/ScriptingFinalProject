@@ -26,8 +26,6 @@ nav {
   color: inherit;
 }
 
-/* ------------------------------------------------------- */
-
 .navBarCategories {
   width: 30%;
   list-style: none;
@@ -51,8 +49,6 @@ nav {
   padding-bottom: 20px;
 }
 
-/* ------------------------------------------------------- */
-
 .navBarActions {
   width: 30%;
   list-style: none;
@@ -62,15 +58,14 @@ nav {
   align-items: center;
 }
 
-/* ------------------------------------------------------- */
 .navBarLogoContainer {
   list-style: none;
 }
 
 .navBarLogo {
   height: 25px;
+  cursor: pointer;
 }
-/* ------------------------------------------------------- */
 
 .navBarCartImage {
   height: 17px;
@@ -101,8 +96,6 @@ nav {
   justify-content: center;
   display: flex;
 }
-
-/* ------------------------------------------------------- */
 
 .currencyDropdownContainer {
   position: relative;
@@ -140,4 +133,3 @@ nav {
 .selectedCurrencyItem {
   background-color: #f0f0f0;
 }
-/* ------------------------------------------------------- */
