@@ -1,70 +1,112 @@
-# Getting Started with Create React App
+E-Commerce Website — Final Scripting Project
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Getting Started
+---------------
 
-## Available Scripts
+1. Clone the repository.
+2. Run the following command to install all dependencies:
+   npm install
+3. Start the development server:
+   npm start
 
-In the project directory, you can run:
+Project Overview
+----------------
 
-### `npm start`
+This project is a complete e-commerce website built using React. 
+It begins at the /categories/all endpoint, where all products are rendered dynamically 
+based on a JSON file used as a simple product database.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Navigation Bar
+--------------
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+The navigation bar includes the following elements:
 
-### `npm test`
+- Category Links:
+  * Women       → /categories/women
+  * Men         → /categories/men
+  * Kids        → /categories/kids
+  Clicking on a category filters and displays related products.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- Logo:
+  Directs the user back to the homepage (/categories/all).
 
-### `npm run build`
+- Currency Selector:
+  Opens a dropdown menu with multiple currency options.
+  Selecting a currency updates all product prices across the website.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- Cart Button:
+  Opens the cart overlay. Displays the number of items in the cart.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Cart Overlay Functionality
+--------------------------
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- Displays current items in the cart.
+- Allows quantity to be increased or decreased.
+- Allows size selection.
+- Displays total cost of items.
+- Buttons:
+  * View Cart → Goes to /cart-page
+  * Checkout → Proceeds to checkout (only if cart is not empty)
 
-### `npm run eject`
+Cart Page — /cart-page
+----------------------
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+- Displays all cart contents in full detail.
+- “Continue” button redirects user to /shipping-info
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Product List & Details
+----------------------
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+Product List:
+- Renders product cards.
+- Hovering on a product reveals the “Add to Cart” button.
+- Clicking a card opens the product detail view at /product-detail-page/:id.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+Product Detail Page:
+- Shows larger product image and thumbnails.
+- Allows selecting a size before adding to cart.
+- Same size selection logic as the cart overlay.
 
-## Learn More
+Add to Cart Logic
+-----------------
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- The same item with the same size cannot be added more than once. (Adding the same item with same size only increases the quantity)
+  Use the + and − buttons in the cart overlay to change quantity.
+- The same item can be added more than once only if different sizes are selected.
+- Size must be selected before adding to cart or proceeding to checkout.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Checkout Process
+----------------
 
-### Code Splitting
+1. Shipping Info — /shipping-info
+   - Requires valid email or phone number.
+   - Requires full shipping address.
+   - “Shipping note” field is optional.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+2. Shipping Method — /shipping-method
+   - Previously entered shipping data is auto-filled.
+   - User must select a shipping option (affects final price).
 
-### Analyzing the Bundle Size
+3. Payment — /checkout-payment
+   - Requires:
+     * Valid credit card number
+     * Expiration date
+     * CVV
+     * Cardholder name (must not be empty)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+4. Confirmation — /payment-confirmation
+   - Shows:
+     * Order ID
+     * Purchased product list
+     * Total amount paid
+     * Option to return to /categories/all
 
-### Making a Progressive Web App
+Contributors
+------------
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+Scripting Final Project by:
 
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- Mariam Tarkashvili – Navigation Bar, Product List Rendering
+- Aleksandre Dididze – Cart Overlay, Cart Page, Product Detail Page
+- Davit Kvartskhava – Shipping Info, Checkout & Payment Pages, Payment Confirmation
+- Irakli Diasamidze – Component Integration, React Router Configuration
