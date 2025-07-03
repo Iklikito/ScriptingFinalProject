@@ -121,3 +121,70 @@
   cursor: pointer;
   transition: background-color 0.3s ease;
 }
+
+.credit-card-form {
+  background-color: #ffffff;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.card-header {
+  display: flex;
+  align-items: center;
+  padding: 15px 20px;
+  background: linear-gradient(to right, #eaf4e7, #d9ead3);
+  color: #4a7c59;
+  font-weight: 500;
+  font-size: 1.1em;
+}
+
+.card-header .fa-credit-card {
+  font-size: 20px;
+  margin-right: 12px;
+}
+
+.card-body {
+  padding: 20px;
+}
+
+.input-group {
+  position: relative;
+  margin-bottom: 15px;
+}
+
+.input-group:last-child {
+  margin-bottom: 0;
+}
+
+.form-control {
+  width: 100%;
+  padding: 12px 15px;
+  border: 1px solid #ced4da;
+  border-radius: 6px;
+  font-size: 16px;
+  box-sizing: border-box;
+  color: #495057;
+}
+
+.form-control::placeholder {
+  color: #adb5bd;
+}
+
+.form-control.has-icon-right {
+  padding-right: 40px;
+}
+
+.input-icon {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 15px;
+  color: #adb5bd;
+  pointer-events: none;
+}
+
+.form-row {
+  display: flex;
+  gap: 15px;
+}

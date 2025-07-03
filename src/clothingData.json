@@ -25,6 +25,91 @@
   },
   {
     "id": 2,
+    "image": "/K2SurvivorJacket0.png",
+    "title": "K2 Survivor Jacket",
+    "price": "60.00",
+    "type": "Climbing Jacket",
+    "category": "men",
+    "gallery": [
+      "/K2SurvivorJacket0.png",
+      "/K2SurvivorJacket1.png",
+      "/K2SurvivorJacket2.png"
+    ],
+    "sizes": ["S", "M", "L", "X"],
+    "defaultsize": "M",
+    "description": "Engineered for resilience and built for extremes, the K2 Survivor Jacket is your ultimate companion in harsh alpine conditions. Designed with advanced thermal insulation, water-resistant shell fabric, and reinforced windproof seams, it provides maximum protection without sacrificing breathability or mobility. Whether you're scaling icy peaks or navigating urban winters, this jacket keeps you warm, dry, and unstoppable. Complete with utility pockets, adjustable cuffs, and a storm-ready hood, the K2 Survivor delivers performance you can count on when it matters most."
+  },
+  {
+    "id": 3,
+    "image": "/herasDress0.png",
+    "title": "Hera Summer Dress",
+    "price": "72.00",
+    "category": "women",
+    "type": "Maxi Dress",
+    "gallery": [
+      "/herasDress0.png",
+      "/herasDress1.png",
+      "/herasDress2.png",
+      "/herasDress3.png"
+    ],
+    "sizes": ["XS", "S", "M", "L"],
+    "defaultsize": "S",
+    "description": "Flowing and elegant, the Hera Summer Dress is perfect for warm days and sunset evenings. Lightweight fabric with a flattering silhouette."
+  },
+  {
+    "id": 4,
+    "image": "/springForce0.png",
+    "title": "Spring Force Shoes",
+    "price": "50.00",
+    "category": "kids",
+    "type": "Running Shoes",
+    "gallery": [
+      "/springForce0.png",
+      "/springForce1.png",
+      "/springForce2.png",
+      "/springForce3.png",
+      "/springForce4.png",
+      "/springForce5.png"
+    ],
+    "sizes": ["S", "M", "L"],
+    "defaultsize": "M",
+    "description": ""
+  },
+  {
+    "id": 5,
+    "image": "/ForestForgeHoodie0.png",
+    "title": "ForestForge Hoodie",
+    "price": "70.00",
+    "category": "men",
+    "type": "Dark Green Hoodie",
+    "gallery": [
+      "/ForestForgeHoodie0.png",
+      "/ForestForgeHoodie1.png",
+      "/ForestForgeHoodie2.png",
+      "/ForestForgeHoodie3.png"
+    ],
+    "sizes": ["S", "M", "L", "XL"],
+    "defaultsize": "L",
+    "description": "Built for comfort, shaped by nature. The ForestForge Hoodie channels the strength and calm of the deep woods with its rich dark green tone and rugged construction. Made from heavyweight cotton-blend fleece, it’s designed to keep you warm through crisp mornings and late-night fires. Featuring a structured hood, durable stitching, and a relaxed fit, this hoodie is as dependable as your favorite trail."
+  },
+  {
+    "id": 6,
+    "image": "/VelvetRaySunglasses0.png",
+    "title": "Velvet Ray",
+    "price": "18.00",
+    "category": "women",
+    "type": "Sunglasses",
+    "gallery": [
+      "/VelvetRaySunglasses0.png",
+      "/VelvetRaySunglasses1.png",
+      "/VelvetRaySunglasses2.png",
+      "/VelvetRaySunglasses3.png"
+    ],
+    "sizes": ["S", "M"],
+    "defaultsize": "S"
+  },
+  {
+    "id": 7,
     "image": "/exampleHoodie.png",
     "title": "Zeus Hoodie",
     "price": "65.00",
@@ -36,7 +121,7 @@
     "description": "Some description..."
   },
   {
-    "id": 3,
+    "id": 8,
     "image": "/exampleHoodie.png",
     "title": "Zeus Hoodie Two",
     "price": "65.00",

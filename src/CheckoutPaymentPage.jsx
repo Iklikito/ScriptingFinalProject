@@ -205,91 +205,92 @@ const CheckoutPaymentPage = () => {
             </div>
 
             <div className="payment-methods">
-              <div className="payment-method-card">
-                <div className="payment-method-header">
-                  <div className="payment-method-label">
-                    <h4 className="payment-method-text">Credit Card</h4>
-                  </div>
+              <div className="credit-card-form">
+                <div className="card-header">
+                  <img src="./CreditCardFill.svg" alt="CreditCardFill" style={{marginRight: "20px"}}/>
+                  <span>Credit Card</span>
                 </div>
-                <form>
-                  <div className="form-group">
-                    <input
-                      type="text"
-                      id="cardNumber"
-                      name="cardNumber"
-                      placeholder="Card Number"
-                      value={formData.cardNumber}
-                      onChange={handleChange}
-                      className={`form-input ${
-                        errors.cardNumber ? "input-error" : ""
-                      }`}
-                      inputMode="numeric"
-                    />
-                    {errors.cardNumber && (
-                      <p className="checkout-page-error-message">
-                        {errors.cardNumber}
-                      </p>
-                    )}
-                  </div>
-                  <div className="form-group">
-                    <input
-                      type="text"
-                      id="cardHolderName"
-                      name="cardHolderName"
-                      placeholder="Card Holder Name"
-                      value={formData.cardHolderName}
-                      onChange={handleChange}
-                      className={`form-input ${
-                        errors.cardHolderName ? "input-error" : ""
-                      }`}
-                    />
-                    {errors.cardHolderName && (
-                      <p className="checkout-page-error-message">
-                        {errors.cardHolderName}
-                      </p>
-                    )}
-                  </div>
-                  <div className="form-row">
-                    <div className="half-width">
+                <div className="card-body">
+                  <form>
+                    <div className="input-group">
                       <input
                         type="text"
-                        id="expiration"
-                        name="expiration"
-                        placeholder="MM/YY"
-                        value={formData.expiration}
-                        onChange={handleChange}
-                        className={`form-input ${
-                          errors.expiration ? "input-error" : ""
+                        name="cardNumber"
+                        placeholder="Card Number"
+                        className={`form-control has-icon-right ${
+                          errors.cardNumber ? "input-error" : ""
                         }`}
+                        value={formData.cardNumber}
+                        onChange={handleChange}
                         inputMode="numeric"
                       />
-                      {errors.expiration && (
+                      <i className="fa-solid fa-lock input-icon"></i>
+                      {errors.cardNumber && (
                         <p className="checkout-page-error-message">
-                          {errors.expiration}
+                          {errors.cardNumber}
                         </p>
                       )}
                     </div>
-                    <div className="half-width">
+
+                    <div className="input-group">
                       <input
-                        type="password"
-                        id="cvv"
-                        name="cvv"
-                        placeholder="CVV"
-                        value={formData.cvv}
-                        onChange={handleChange}
-                        className={`form-input ${
-                          errors.cvv ? "input-error" : ""
+                        type="text"
+                        name="cardHolderName"
+                        placeholder="Holder Name"
+                        className={`form-control ${
+                          errors.cardHolderName ? "input-error" : ""
                         }`}
-                        inputMode="numeric"
+                        value={formData.cardHolderName}
+                        onChange={handleChange}
                       />
-                      {errors.cvv && (
+                      {errors.cardHolderName && (
                         <p className="checkout-page-error-message">
-                          {errors.cvv}
+                          {errors.cardHolderName}
                         </p>
                       )}
                     </div>
-                  </div>
-                </form>
+
+                    <div className="form-row">
+                      <div className="input-group">
+                        <input
+                          type="text"
+                          name="expiration"
+                          placeholder="Expiration (MM/YY)"
+                          className={`form-control ${
+                            errors.expiration ? "input-error" : ""
+                          }`}
+                          value={formData.expiration}
+                          onChange={handleChange}
+                          inputMode="numeric"
+                        />
+                        {errors.expiration && (
+                          <p className="checkout-page-error-message">
+                            {errors.expiration}
+                          </p>
+                        )}
+                      </div>
+                      <div className="input-group">
+                        <input
+                          type="text"
+                          name="cvv"
+                          placeholder="CVV"
+                          className={`form-control has-icon-right ${
+                            errors.cvv ? "input-error" : ""
+                          }`}
+                          value={formData.cvv}
+                          onChange={handleChange}
+                          inputMode="numeric"
+                        />
+                        <i className="fa-solid fa-circle-info input-icon"></i>
+                        {errors.cvv && (
+                          <p className="checkout-page-error-message">
+                            {errors.cvv}
+                          </p>
+                        )}
+                      </div>
+                    </div>
+                  </form>
+                </div>
               </div>
             </div>
 
