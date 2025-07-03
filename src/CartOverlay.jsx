@@ -53,10 +53,12 @@ const CartOverlay = () => {
                     <button
                       key={size}
                       onClick={() => {
+                        console.log("Hi");
+                        console.log(index);
                         sharedData.setCartItems((x) => {
                           x[index] = {
                             id: itemId,
-                            quantity: itemQuantity,
+                            quantity: itemQuantity + 1,
                             size: size,
                           };
                           return x;
@@ -95,7 +97,7 @@ const CartOverlay = () => {
                       sharedData.setCartItems((x) => {
                         x[index] = {
                           id: itemId,
-                          quantity: itemQuantity,
+                          quantity: itemQuantity - 1,
                           size: itemSize,
                         };
                         return [...x];

@@ -40,13 +40,14 @@ const ClothingCard = ({ itemId, image, title, price, showOverlay }) => {
             console.log("item added");
             e.stopPropagation();
             sharedData.setCartItems((x) => {
-              x.push({
+              const y = [...x];
+              y.push({
                 id: itemId,
                 quantity: 1,
                 size: sharedData.clothingData[itemId].defaultsize,
               });
               console.log(sharedData.cartItems);
-              return x;
+              return y;
             });
           }}
         >

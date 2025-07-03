@@ -111,7 +111,7 @@ function App() {
       subtotal,
       total,
     }),
-    [checkoutData, cartItemIds, quantities, sizes, currency, paidShipping]
+    [checkoutData, cartItems, quantities, sizes, currency, paidShipping]
   );
 
   return (
