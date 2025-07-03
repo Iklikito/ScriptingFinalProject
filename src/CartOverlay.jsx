@@ -143,7 +143,13 @@ const CartOverlay = () => {
                           return y;
                         });
                       }
+                      console.log("Pre-splice");
+                      console.log(index);
+                      console.log(y);
                       y.splice(index, 1);
+                      console.log("Post-splice");
+                      console.log(index);
+                      console.log(y);
                       return y;
                     });
                   }}
