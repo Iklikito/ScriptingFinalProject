@@ -33,7 +33,10 @@
 }
 
 .cart-item-info {
-  flex: 2;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: flex-start;
 }
 
 .cart-item-name {

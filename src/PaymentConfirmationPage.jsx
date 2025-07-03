@@ -38,12 +38,8 @@ const PaymentConfirmationPage = () => {
               type="button"
               className="primary-button"
               onClick={() => {
-                sharedData.setCartItemIds([]);
+                sharedData.setCartItems([]);
                 localStorage.removeItem("cartItemIds");
-                sharedData.setQuantities({});
-                localStorage.removeItem("quantities");
-                sharedData.setSizes({});
-                localStorage.removeItem("sizes");
                 navigate("/categories/all");
               }}
             >
@@ -51,13 +47,7 @@ const PaymentConfirmationPage = () => {
             </button>
           </div>
         </div>
-        <ProductSummary
-          items={sharedData.dummyCartItems}
-          subtotal={sharedData.subtotal}
-          shipping={formattedShipping}
-          total={finalTotal}
-          paidAmount={finalTotal}
-        />
+        <ProductSummary shipping={formattedShipping} />
       </div>
     </div>
   );

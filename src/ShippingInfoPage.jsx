@@ -273,12 +273,7 @@ const ShippingInfoPage = () => {
           </form>
         </div>
 
-        <ProductSummary
-          items={sharedData.dummyCartItems}
-          subtotal={sharedData.subtotal}
-          shipping="Calculated at the next step"
-          total={sharedData.total}
-        />
+        <ProductSummary shipping="Calculated at the next step" />
       </div>
     </div>
   );

@@ -156,12 +156,7 @@ const ShippingMethodPage = () => {
           </div>
         </div>
 
-        <ProductSummary
-          items={sharedData.dummyCartItems}
-          subtotal={sharedData.subtotal}
-          shipping={formattedShipping}
-          total={currentTotal}
-        />
+        <ProductSummary shipping={formattedShipping} />
       </div>
     </div>
   );

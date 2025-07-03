@@ -26,7 +26,10 @@ const CartOverlay = () => {
   return (
     <div className="cart-overlay">
       <h2 className="cart-title">
-        My Bag, <span>{sharedData.cartItems.length} items</span>
+        My Bag,{" "}
+        <span>
+          {sharedData.cartItems.reduce((acc, x) => acc + x.quantity, 0)} items
+        </span>
       </h2>
 
       <div className="cart-body">
@@ -88,12 +91,17 @@ const CartOverlay = () => {
                           );
                           if (merged) {
                             y.splice(index, 1);
+                          } else {
+                            y[index].size = size;
                           }
+
                           return y;
                         });
                       }}
                       className={`size-button ${
-                        size == itemSize ? "selected" : ""
+                        size == sharedData.cartItems[index].size
+                          ? "selected"
+                          : ""
                       }`}
                     >
                       {size}

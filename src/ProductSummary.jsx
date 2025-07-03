@@ -16,34 +16,38 @@ const convertPrices = (price, currency) => {
   }
 };
 
-const ProductSummary = ({ items, subtotal, shipping, total, paidAmount }) => {
+const ProductSummary = ({ shipping, paidAmount }) => {
   const sharedData = useContext(Context);
 
   return (
     <div className="product-summary-panel">
       <div className="item-list">
-        {sharedData.cartItemIds.map((itemId) => (
-          <div key={itemId} className="summary-item">
-            <div className="item-details">
-              <img
-                src={clothingData[itemId].image}
-                alt={clothingData[itemId].title}
-                className="item-image"
-              />
-              <div className="item-info">
-                <span className="item-name">{clothingData[itemId].title}</span>
-                <span className="item-type">{clothingData[itemId].type}</span>
-                <span className="item-price">
-                  {sharedData.currency.substring(0, 1) +
-                    convertPrices(
-                      clothingData[itemId].price,
-                      sharedData.currency
-                    )}
-                </span>
+        {sharedData.cartItems.map(
+          ({ id: itemId, quantity: itemQuantity, size: itemSize }) => (
+            <div key={itemId} className="summary-item">
+              <div className="item-details">
+                <img
+                  src={clothingData[itemId].image}
+                  alt={clothingData[itemId].title}
+                  className="item-image"
+                />
+                <div className="item-info">
+                  <span className="item-name">
+                    {clothingData[itemId].title}
+                  </span>
+                  <span className="item-type">{clothingData[itemId].type}</span>
+                  <span className="item-price">
+                    {sharedData.currency.substring(0, 1) +
+                      convertPrices(
+                        clothingData[itemId].price,
+                        sharedData.currency
+                      )}
+                  </span>
+                </div>
               </div>
             </div>
-          </div>
-        ))}
+          )
+        )}
       </div>
 
       <div className="summary-breakdown">
