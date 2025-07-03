@@ -74,7 +74,6 @@ const ClothingCard = ({ itemId, image, title, price, showOverlay }) => {
                   quantity: 1,
                 });
               }
-
               return y;
             });
           }}

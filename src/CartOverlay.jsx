@@ -54,15 +54,6 @@ const CartOverlay = () => {
                       key={size}
                       onClick={() => {
                         console.log("Hi");
-                        console.log(index);
-                        sharedData.setCartItems((x) => {
-                          x[index] = {
-                            id: itemId,
-                            quantity: itemQuantity + 1,
-                            size: size,
-                          };
-                          return x;
-                        });
                       }}
                       className={`size-button ${
                         size == itemSize ? "selected" : ""
@@ -78,11 +69,13 @@ const CartOverlay = () => {
                 <button
                   onClick={() => {
                     sharedData.setCartItems((x) => {
-                      x[index] = {
+                      let y = [...x];
+                      y[index] = {
                         id: itemId,
-                        quantity: itemQuantity,
+                        quantity: itemQuantity + 1,
                         size: itemSize,
                       };
+                      return y;
                     });
                   }}
                 >
