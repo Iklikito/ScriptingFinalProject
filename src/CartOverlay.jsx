@@ -32,6 +32,7 @@ const CartOverlay = () => {
           <div className="cart-item" key={index}>
             <div className="cart-item-info">
               <div className="cart-item-name">{clothingData[itemId].title}</div>
+              <div className="cart-item-name">{clothingData[itemId].type}</div>
               <div className="cart-item-price">
                 {sharedData.currency.substring(0, 1) +
                   convertPrices(

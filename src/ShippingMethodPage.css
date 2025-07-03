@@ -1,4 +1,4 @@
-.checkout-container {
+.shipping-method-checkout-container {
   display: flex;
   flex-direction: column;
   max-width: 100%;
@@ -7,14 +7,14 @@
   overflow: hidden;
 }
 
-.page-content {
+.shipping-method-page-content {
   display: flex;
   padding-left: 10%;
   gap: 40px;
   flex-wrap: nowrap;
 }
 
-.form-section {
+.shipping-method-form-section {
   flex: 1;
   min-width: 300px;
   padding-bottom: 30px;
@@ -24,7 +24,7 @@ h3 {
   margin: 0;
 }
 
-.form-title {
+.shipping-method-form-title {
   margin-bottom: 20px;
   color: #333;
   font-size: 1.8em;
@@ -106,20 +106,21 @@ h3 {
   color: #333;
 }
 
-.error-message {
+.shipping-method-error-message {
   color: red;
   font-size: 0.85em;
   margin-top: 5px;
 }
 
-.form-actions {
+.shipping-method-form-actions {
   display: flex;
   justify-content: space-between;
   margin-top: 30px;
   align-items: center;
 }
 
-.back-button {
+.shipping-method-back-button {
+    text-decoration: underline;
   background: none;
   border: none;
   color: #28a745;
@@ -129,7 +130,7 @@ h3 {
   transition: color 0.3s ease;
 }
 
-.primary-button {
+.shipping-method-primary-button {
   background-color: #28a745;
   color: white;
   border: none;

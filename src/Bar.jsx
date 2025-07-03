@@ -1,8 +1,9 @@
-import { NavLink, useLocation, useParams } from "react-router-dom";
+import { Navigate, NavLink, useLocation, useParams } from "react-router-dom";
 import "./Bar.css";
 import { useState, useContext } from "react";
 import CartOverlay from "./CartOverlay.jsx";
 import Context from "./context.js";
+import { useNavigate } from "react-router-dom";
 
 const CurrencyDropdown = () => {
   const [open, setOpen] = useState(false);
@@ -46,6 +47,7 @@ const CurrencyDropdown = () => {
 const Bar = ({ category, showOverlay, setShowOverlay }) => {
   const sharedData = useContext(Context);
   const location = useLocation();
+  const navigate = useNavigate();
 
   const page = location.pathname.split("/")[1];
 
@@ -93,7 +95,14 @@ const Bar = ({ category, showOverlay, setShowOverlay }) => {
 
         <ul className="navBarLogoContainer">
           <li>
-            <img src="/navBarLogo.png" alt="Logo" className="navBarLogo" />
+            <img
+              src="/navBarLogo.png"
+              onClick={() => {
+                navigate("/categories/all");
+              }}
+              alt="Logo"
+              className="navBarLogo"
+            />
           </li>
         </ul>
 

@@ -139,7 +139,7 @@ const CartPage = () => {
           </div>
           <button
             className="continue-button"
-            onClick={() => navigate("/categories/")}
+            onClick={() => navigate("/shipping-info")}
           >
             CONTINUE
           </button>

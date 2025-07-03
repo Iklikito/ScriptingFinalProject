@@ -75,11 +75,11 @@ const ShippingMethodPage = () => {
         )}`;
 
   return (
-    <div className="checkout-container">
-      <div className="page-content">
-        <div className="form-section">
+    <div className="shipping-method-checkout-container">
+      <div className="shipping-method-page-content">
+        <div className="shipping-method-form-section">
           <CheckoutHeader />
-          <h2 className="form-title">Shipping Method</h2>
+          <h2 className="shipping-method-form-title">Shipping Method</h2>
 
           <div className="info-box">
             <div className="info-row">
@@ -136,19 +136,19 @@ const ShippingMethodPage = () => {
             </div>
           ))}
 
-          {error && <p className="error-message">{error}</p>}
+          {error && <p className="shipping-method-error-message">{error}</p>}
 
-          <div className="form-actions">
+          <div className="shipping-method-form-actions">
             <button
               type="button"
-              className="back-button"
+              className="shipping-method-back-button"
               onClick={() => navigate("/shipping-info")}
             >
-              &lt; Back to details
+              Back to details
             </button>
             <button
               type="button"
-              className="primary-button"
+              className="shipping-method-primary-button"
               onClick={handleGoToPayment}
             >
               Go to payment

@@ -15,13 +15,13 @@ const PaymentConfirmationPage = () => {
     shippingCost === 0 ? "Free Shipping" : `$${shippingCost.toFixed(2)}`;
 
   return (
-    <div className="checkout-container">
-      <div className="page-content">
-        <div className="form-section">
-          <CheckoutHeader />
+    <div className="payment-confirmation-checkout-container">
+      <div className="payment-confirmation-page-content">
+        <div className="payment-confirmation-form-section">
+          <CheckoutHeader allGreen={true} />
           <div className="confirmation-message">
             <img
-              src="/CheckCircle.svg" // use "src={require('./path/to/checkmark.svg')}" if importing from src
+              src="/CheckCircle.svg"
               alt="Payment Success"
               className="checkmark-icon"
             />

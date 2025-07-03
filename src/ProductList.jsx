@@ -40,6 +40,9 @@ const ClothingCard = ({ itemId, image, title, price, showOverlay }) => {
             e.stopPropagation();
             if (!sharedData.cartItemIds.includes(itemId)) {
               sharedData.setCartItemIds((x) => [...x, itemId]);
+              console.log("cart item ids: " + sharedData.cartItemIds);
+              console.log("Added id: " + itemId);
+              console.log("cart item ids: " + sharedData.cartItemIds);
               sharedData.setSizes((x) => {
                 return {
                   ...x,

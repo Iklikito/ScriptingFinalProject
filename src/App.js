@@ -1,5 +1,5 @@
 import React, { useState, useEffect, lazy, useMemo } from "react";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 import Context from "./context.js";
 import clothingData from "./clothingData.json";
 
@@ -119,6 +119,7 @@ function App() {
   return (
     <Context.Provider value={sharedData}>
       <Routes>
+        <Route path="/" element={<Navigate to="/categories/all" />} />
         <Route path="/categories" element={<ProductListPage />} />
         <Route path="/categories/:category" element={<ProductListPage />} />
         <Route path="/cart-page" element={<CartPage />} />

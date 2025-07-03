@@ -85,10 +85,11 @@ const ProductDetailPage = () => {
           onClick={() => {
             if (!sharedData.cartItemIds.includes(itemId)) {
               sharedData.setCartItemIds((x) => [...x, itemId]);
+              console.log(sharedData.cartItemIds);
               sharedData.setSizes((x) => {
                 return {
                   ...x,
-                  [itemId]: selectedSize,
+                  [itemId]: clothingData[itemId].defaultsize,
                 };
               });
               sharedData.setQuantities((x) => {
@@ -97,8 +98,8 @@ const ProductDetailPage = () => {
                   [itemId]: 1,
                 };
               });
-              navigate("/categories/all");
             }
+            navigate("/categories/all");
           }}
         >
           ADD TO CART

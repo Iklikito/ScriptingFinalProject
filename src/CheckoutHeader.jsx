@@ -2,12 +2,12 @@ import React from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import "./CheckoutHeader.css";
 
-function CheckoutHeader() {
+function CheckoutHeader({ allGreen }) {
   const location = useLocation();
   const navigate = useNavigate();
 
   const steps = [
-    { path: "/cart", label: "Cart" },
+    { path: "/cart-page", label: "Cart" },
     { path: "/shipping-info", label: "Details" },
     { path: "/shipping-method", label: "Shipping" },
     { path: "/checkout-payment", label: "Payment" },
@@ -22,14 +22,16 @@ function CheckoutHeader() {
       <div className="breadcrumb-container">
         {steps.map((step, index) => (
           <React.Fragment key={step.path}>
-            {index < currentStepIndex ? (
+            {index < currentStepIndex || allGreen ? (
               <span
                 className="breadcrumb-link"
-                onClick={() => navigate(step.path)}
+                onClick={() =>
+                  allGreen ? console.log("") : navigate(step.path)
+                }
               >
                 {step.label}
               </span>
-            ) : index === currentStepIndex ? (
+            ) : !allGreen && index === currentStepIndex ? (
               <span className="breadcrumb-current">{step.label}</span>
             ) : (
               <span className="breadcrumb-future">{step.label}</span>

@@ -92,7 +92,7 @@ const CheckoutPaymentPage = () => {
             .toUpperCase()}`,
         }));
         navigate("/payment-confirmation");
-        if (!sharedData.checkoutData.saveInfo) sharedData.setCheckoutData({});
+        if (sharedData.checkoutData.saveInfo) sharedData.setCheckoutData({});
         localStorage.removeItem("checkoutData");
         setProcessing(false);
       }, 2000);
@@ -106,11 +106,11 @@ const CheckoutPaymentPage = () => {
 
   return (
     <div className="checkout-payment-wrapper">
-      <div className="checkout-container">
-        <div className="page-content">
-          <div className="form-section">
+      <div className="checkout-page-checkout-container">
+        <div className="checkout-page-page-content">
+          <div className="checkout-page-form-section">
             <CheckoutHeader />
-            <h2 className="form-title">Payment Information</h2>
+            <h2 className="checkout-page-form-title">Payment Information</h2>
 
             <div
               style={{
@@ -226,7 +226,9 @@ const CheckoutPaymentPage = () => {
                       inputMode="numeric"
                     />
                     {errors.cardNumber && (
-                      <p className="error-message">{errors.cardNumber}</p>
+                      <p className="checkout-page-error-message">
+                        {errors.cardNumber}
+                      </p>
                     )}
                   </div>
                   <div className="form-group">
@@ -242,7 +244,9 @@ const CheckoutPaymentPage = () => {
                       }`}
                     />
                     {errors.cardHolderName && (
-                      <p className="error-message">{errors.cardHolderName}</p>
+                      <p className="checkout-page-error-message">
+                        {errors.cardHolderName}
+                      </p>
                     )}
                   </div>
                   <div className="form-row">
@@ -260,7 +264,9 @@ const CheckoutPaymentPage = () => {
                         inputMode="numeric"
                       />
                       {errors.expiration && (
-                        <p className="error-message">{errors.expiration}</p>
+                        <p className="checkout-page-error-message">
+                          {errors.expiration}
+                        </p>
                       )}
                     </div>
                     <div className="half-width">
@@ -277,7 +283,9 @@ const CheckoutPaymentPage = () => {
                         inputMode="numeric"
                       />
                       {errors.cvv && (
-                        <p className="error-message">{errors.cvv}</p>
+                        <p className="checkout-page-error-message">
+                          {errors.cvv}
+                        </p>
                       )}
                     </div>
                   </div>
@@ -285,17 +293,17 @@ const CheckoutPaymentPage = () => {
               </div>
             </div>
 
-            <div className="form-actions">
+            <div className="checkout-page-form-actions">
               <button
                 type="button"
-                className="back-button"
+                className="checkout-page-back-button"
                 onClick={() => navigate("/shipping-method")}
               >
-                &lt; Back to shipping
+                Back to shipping
               </button>
               <button
                 type="button"
-                className="primary-button"
+                className="checkout-page-primary-button"
                 onClick={handlePayNow}
                 disabled={processing}
               >

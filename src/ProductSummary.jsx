@@ -33,12 +33,15 @@ const ProductSummary = ({ items, subtotal, shipping, total, paidAmount }) => {
               <div className="item-info">
                 <span className="item-name">{clothingData[itemId].title}</span>
                 <span className="item-type">{clothingData[itemId].type}</span>
+                <span className="item-price">
+                  {sharedData.currency.substring(0, 1) +
+                    convertPrices(
+                      clothingData[itemId].price,
+                      sharedData.currency
+                    )}
+                </span>
               </div>
             </div>
-            <span className="item-price">
-              {sharedData.currency.substring(0, 1) +
-                convertPrices(clothingData[itemId].price, sharedData.currency)}
-            </span>
           </div>
         ))}
       </div>
@@ -54,8 +57,11 @@ const ProductSummary = ({ items, subtotal, shipping, total, paidAmount }) => {
         <div className="summary-row">
           <span>Shipping</span>
           <span>
-            {typeof shipping === "number"
-              ? `$${shipping.toFixed(2)}`
+            {true
+              ? `${sharedData.currency.substring(0, 1)}${convertPrices(
+                  sharedData.paidShipping ? 4.99 : 0,
+                  sharedData.currency
+                )}`
               : shipping}
           </span>
         </div>

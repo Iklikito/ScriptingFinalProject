@@ -262,9 +262,9 @@ const ShippingInfoPage = () => {
               <button
                 type="button"
                 className="shipping-back-button"
-                onClick={() => console.log("Back to Cart")}
+                onClick={() => navigate("/cart-page")}
               >
-                &lt; Back to Cart
+                Back to Cart
               </button>
               <button type="submit" className="shipping-primary-button">
                 Go to shipping
