@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import Context from "./context";
 import { useNavigate } from "react-router-dom";
 import clothingData from "./clothingData.json";
+import Bar from "./Bar";
 
 const convertPrices = (price, currency) => {
   if (currency == "$ USD") {
@@ -28,6 +29,8 @@ const ProductDetailPage = () => {
   const navigate = useNavigate();
 
   return (
+    <>
+    <Bar/>
     <div className="product-detail-page">
       <div className="image-section">
         <div className="thumbnails">
@@ -110,6 +113,7 @@ const ProductDetailPage = () => {
         </p>
       </div>
     </div>
+    </>
   );
 };
 

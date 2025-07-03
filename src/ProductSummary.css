@@ -46,9 +46,9 @@
 .item-info {
   display: flex;
   flex-direction: column;
-  align-items: flex-start; /* optional for clean left alignment */
-  justify-content: flex-start; /* ensures everything aligns at the top */
-  gap: 4px; /* optional spacing between lines */
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 4px;
   font-size: 1.2em;
 }
 

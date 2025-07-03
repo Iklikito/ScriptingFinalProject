@@ -61,7 +61,15 @@ const Bar = ({ category, showOverlay, setShowOverlay }) => {
             }
           >
             <NavLink
-              to={category == "women" ? `/${page}/all` : `/${page}/women`}
+              to={
+                page == "product-detail-page"
+                  ? category == "women"
+                    ? `/categories/all`
+                    : `/categories/women`
+                  : category == "women"
+                  ? `/${page}/all`
+                  : `/${page}/women`
+              }
               className="navLink"
             >
               Women
@@ -73,7 +81,15 @@ const Bar = ({ category, showOverlay, setShowOverlay }) => {
             }
           >
             <NavLink
-              to={category == "men" ? `/${page}/all` : `/${page}/men`}
+              to={
+                page == "product-detail-page"
+                  ? category == "men"
+                    ? `/categories/all`
+                    : `/categories/men`
+                  : category == "men"
+                  ? `/${page}/all`
+                  : `/${page}/men`
+              }
               className="navLink"
             >
               Men
@@ -85,7 +101,15 @@ const Bar = ({ category, showOverlay, setShowOverlay }) => {
             }
           >
             <NavLink
-              to={category == "kids" ? `/${page}/all` : `/${page}/kids`}
+              to={
+                page == "product-detail-page"
+                  ? category == "kids"
+                    ? `/categories/all`
+                    : `/categories/kids`
+                  : category == "kids"
+                  ? `/${page}/all`
+                  : `/${page}/kids`
+              }
               className="navLink"
             >
               Kids
