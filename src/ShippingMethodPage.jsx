@@ -58,7 +58,7 @@ const ShippingMethodPage = () => {
       ...prev,
       shippingMethod: chosenMethod,
     }));
-    sharedData.setFreeShipping(selectedShipping == "standard");
+    sharedData.setPaidShipping(selectedShipping == "express");
     navigate("/checkout-payment");
   };
 

@@ -108,7 +108,6 @@ const Bar = ({ category, showOverlay, setShowOverlay }) => {
                 className="navCartButton"
                 onClick={() => {
                   setShowOverlay((p) => !p);
-                  console.log(showOverlay);
                 }}
               >
                 <img

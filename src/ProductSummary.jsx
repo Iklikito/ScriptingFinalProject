@@ -2,6 +2,7 @@ import React from "react";
 import "./ProductSummary.css";
 import { useContext } from "react";
 import Context from "./context";
+import clothingData from "./clothingData.json";
 
 const convertPrices = (price, currency) => {
   if (currency == "$ USD") {
@@ -16,14 +17,6 @@ const convertPrices = (price, currency) => {
 };
 
 const ProductSummary = ({ items, subtotal, shipping, total, paidAmount }) => {
-  console.log("ProductSummary props:", {
-    items,
-    subtotal,
-    shipping,
-    total,
-    paidAmount,
-  });
-
   const sharedData = useContext(Context);
 
   return (
@@ -33,25 +26,18 @@ const ProductSummary = ({ items, subtotal, shipping, total, paidAmount }) => {
           <div key={itemId} className="summary-item">
             <div className="item-details">
               <img
-                src={sharedData.clothingData[itemId].image}
-                alt={sharedData.clothingData[itemId].title}
+                src={clothingData[itemId].image}
+                alt={clothingData[itemId].title}
                 className="item-image"
               />
               <div className="item-info">
-                <span className="item-name">
-                  {sharedData.clothingData[itemId].title}
-                </span>
-                <span className="item-type">
-                  {sharedData.clothingData[itemId].type}
-                </span>
+                <span className="item-name">{clothingData[itemId].title}</span>
+                <span className="item-type">{clothingData[itemId].type}</span>
               </div>
             </div>
             <span className="item-price">
               {sharedData.currency.substring(0, 1) +
-                convertPrices(
-                  sharedData.clothingData[itemId].price,
-                  sharedData.currency
-                )}
+                convertPrices(clothingData[itemId].price, sharedData.currency)}
             </span>
           </div>
         ))}
@@ -62,16 +48,7 @@ const ProductSummary = ({ items, subtotal, shipping, total, paidAmount }) => {
           <span>Subtotal</span>
           <span>
             {sharedData.currency.substring(0, 1) +
-              convertPrices(
-                sharedData.cartItemIds.reduce(
-                  (sum, itemId) =>
-                    sum +
-                    sharedData.clothingData[itemId].price *
-                      sharedData.quantities[itemId],
-                  0
-                ),
-                sharedData.currency
-              )}
+              convertPrices(sharedData.subtotal, sharedData.currency)}
           </span>
         </div>
         <div className="summary-row">
@@ -87,17 +64,7 @@ const ProductSummary = ({ items, subtotal, shipping, total, paidAmount }) => {
             <span>Paid</span>
             <span>
               {sharedData.currency.substring(0, 1) +
-                convertPrices(
-                  sharedData.freeShipping * 4.99 +
-                    sharedData.cartItemIds.reduce(
-                      (sum, itemId) =>
-                        sum +
-                        sharedData.clothingData[itemId].price *
-                          sharedData.quantities[itemId],
-                      0
-                    ),
-                  sharedData.currency
-                )}
+                convertPrices(sharedData.total, sharedData.currency)}
             </span>
           </div>
         )}
@@ -107,17 +74,7 @@ const ProductSummary = ({ items, subtotal, shipping, total, paidAmount }) => {
         <span>Total</span>
         <span>
           {sharedData.currency.substring(0, 1) +
-            convertPrices(
-              sharedData.freeShipping * 4.99 +
-                sharedData.cartItemIds.reduce(
-                  (sum, itemId) =>
-                    sum +
-                    sharedData.clothingData[itemId].price *
-                      sharedData.quantities[itemId],
-                  0
-                ),
-              sharedData.currency
-            )}
+            convertPrices(sharedData.total, sharedData.currency)}
         </span>
       </div>
     </div>

@@ -43,7 +43,7 @@ const ClothingCard = ({ itemId, image, title, price, showOverlay }) => {
               sharedData.setSizes((x) => {
                 return {
                   ...x,
-                  [itemId]: sharedData.clothingData[itemId].defaultsize,
+                  [itemId]: clothingData[itemId].defaultsize,
                 };
               });
               sharedData.setQuantities((x) => {

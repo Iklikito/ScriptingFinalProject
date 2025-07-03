@@ -38,6 +38,12 @@ const PaymentConfirmationPage = () => {
               type="button"
               className="primary-button"
               onClick={() => {
+                sharedData.setCartItemIds([]);
+                localStorage.removeItem("cartItemIds");
+                sharedData.setQuantities({});
+                localStorage.removeItem("quantities");
+                sharedData.setSizes({});
+                localStorage.removeItem("sizes");
                 navigate("/categories/all");
               }}
             >

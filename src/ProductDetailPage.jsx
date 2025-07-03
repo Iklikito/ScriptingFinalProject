@@ -3,6 +3,7 @@ import "./ProductDetailPage.css";
 import { useParams } from "react-router-dom";
 import Context from "./context";
 import { useNavigate } from "react-router-dom";
+import clothingData from "./clothingData.json";
 
 const convertPrices = (price, currency) => {
   if (currency == "$ USD") {
@@ -21,7 +22,7 @@ const ProductDetailPage = () => {
   const params = useParams();
   const itemId = params.id;
   const [selectedSize, setSelectedSize] = useState(
-    sharedData.clothingData[itemId].defaultsize
+    clothingData[itemId].defaultsize
   );
   const [selectedImageIndex, setSelectedImageIndex] = useState(0);
   const navigate = useNavigate();
@@ -30,39 +31,34 @@ const ProductDetailPage = () => {
     <div className="product-detail-page">
       <div className="image-section">
         <div className="thumbnails">
-          {sharedData.clothingData[itemId].gallery.map((thumb, index) => (
+          {clothingData[itemId].gallery.map((thumb, index) => (
             <img
               key={index}
               src={thumb}
               alt={`Thumbnail ${index + 1}`}
               className="thumbnail"
               onClick={() => {
-                console.log("Index changed to " + index);
                 setSelectedImageIndex(index);
               }}
             />
           ))}
         </div>
         <img
-          src={sharedData.clothingData[itemId].gallery[selectedImageIndex]}
+          src={clothingData[itemId].gallery[selectedImageIndex]}
           alt="Main Product"
           className="main-image"
         />
       </div>
       <div className="product-info">
         <div>
-          <h2 className="product-title">
-            {sharedData.clothingData[itemId].title}
-          </h2>
-          <p className="product-subtitle">
-            {sharedData.clothingData[itemId].type}
-          </p>
+          <h2 className="product-title">{clothingData[itemId].title}</h2>
+          <p className="product-subtitle">{clothingData[itemId].type}</p>
         </div>
 
         <div className="size-block">
           <h4 className="product-page-size-label">SIZE:</h4>
           <div className="size-options">
-            {sharedData.clothingData[itemId].sizes.map((size) => (
+            {clothingData[itemId].sizes.map((size) => (
               <button
                 key={size}
                 onClick={() => setSelectedSize(size)}
@@ -80,10 +76,7 @@ const ProductDetailPage = () => {
           <p className="price-label">PRICE:</p>
           <p className="price-value">
             {sharedData.currency.substring(0, 1) +
-              convertPrices(
-                sharedData.clothingData[itemId].price,
-                sharedData.currency
-              )}
+              convertPrices(clothingData[itemId].price, sharedData.currency)}
           </p>
         </div>
 
@@ -112,7 +105,7 @@ const ProductDetailPage = () => {
         </button>
 
         <p className="product-description">
-          {sharedData.clothingData[itemId].description}
+          {clothingData[itemId].description}
         </p>
       </div>
     </div>

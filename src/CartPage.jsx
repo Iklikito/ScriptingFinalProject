@@ -4,6 +4,7 @@ import Context from "./context";
 import "./CartPage.css";
 import Bar from "./Bar";
 import "./Bar.css";
+import clothingData from "./clothingData.json";
 
 const convertPrices = (price, currency) => {
   if (currency === "$ USD") return price;
@@ -29,18 +30,18 @@ const CartPage = () => {
             <div className="cart-page-item" key={index}>
               <div className="cart-page-item-info">
                 <div className="cart-page-item-name">
-                  {sharedData.clothingData[itemId].title}
+                  {clothingData[itemId].title}
                 </div>
                 <div className="cart-page-item-price">
                   {sharedData.currency.substring(0, 1) +
                     convertPrices(
-                      sharedData.clothingData[itemId].price,
+                      clothingData[itemId].price,
                       sharedData.currency
                     )}
                 </div>
                 <div className="cart-page-size-label">SIZE:</div>
                 <div className="cart-page-size-buttons">
-                  {sharedData.clothingData[itemId].sizes.map((size) => (
+                  {clothingData[itemId].sizes.map((size) => (
                     <button
                       key={size}
                       onClick={() => {
@@ -97,8 +98,8 @@ const CartPage = () => {
                   </button>
                 </div>
                 <img
-                  src={sharedData.clothingData[itemId].gallery[0]} // Using the first image from gallery
-                  alt={sharedData.clothingData[itemId].title}
+                  src={clothingData[itemId].gallery[0]} // Using the first image from gallery
+                  alt={clothingData[itemId].title}
                   className="cart-page-item-image"
                 />
                 <div className="image-carousel-buttons">
@@ -128,7 +129,7 @@ const CartPage = () => {
                   .reduce(
                     (sum, itemId) =>
                       sum +
-                      sharedData.clothingData[itemId].price *
+                      clothingData[itemId].price *
                         sharedData.quantities[itemId],
                     0
                   )

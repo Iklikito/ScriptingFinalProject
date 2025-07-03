@@ -1,4 +1,4 @@
-import React, { useState, useEffect, lazy } from "react";
+import React, { useState, useEffect, lazy, useMemo } from "react";
 import { Routes, Route } from "react-router-dom";
 import Context from "./context.js";
 import clothingData from "./clothingData.json";
@@ -17,25 +17,6 @@ const countries = [
   { value: "CA", label: "Canada" },
 ];
 
-const dummyCartItems = [
-  {
-    id: "prod_12345",
-    name: "Apollo AeroGlide Running Shorts",
-    type: "Running Short",
-    price: 50.0,
-    quantity: 1,
-    image: "https://via.placeholder.com/60x60/87CEEB/FFFFFF?text=Short", // Placeholder image
-  },
-  {
-    id: "prod_67890",
-    name: "Nike Air Zoom Pegasus 40",
-    type: "Running Shoes",
-    price: 130.0,
-    quantity: 1,
-    image: "https://via.placeholder.com/60x60/FFD700/FFFFFF?text=Shoes", // Placeholder image
-  },
-];
-
 const ProductListPage = lazy(() => import("./ProductList.jsx"));
 const CartPage = lazy(() => import("./CartPage.jsx"));
 const ProductDetailPage = lazy(() => import("./ProductDetailPage.jsx"));
@@ -47,11 +28,45 @@ const PaymentConfirmationPage = lazy(() =>
 );
 
 function App() {
-  const [cartItemIds, setCartItemIds] = useState([]);
-  const [quantities, setQuantities] = useState({});
-  const [sizes, setSizes] = useState({});
+  //const [cartItemIds, setCartItemIds] = useState([]);
+  //const [quantities, setQuantities] = useState({});
+  //const [sizes, setSizes] = useState({});
 
-  const [currency, setCurrency] = useState("$ USD");
+  const [cartItemIds, setCartItemIds] = useState(() => {
+    const stored0 = localStorage.getItem("cartItemIds");
+    return stored0 !== null ? JSON.parse(stored0) : [];
+  });
+
+  useEffect(() => {
+    localStorage.setItem("cartItemIds", JSON.stringify(cartItemIds));
+  }, [cartItemIds]);
+
+  const [quantities, setQuantities] = useState(() => {
+    const stored1 = localStorage.getItem("quantities");
+    return stored1 !== null ? JSON.parse(stored1) : {};
+  });
+
+  useEffect(() => {
+    localStorage.setItem("quantities", JSON.stringify(quantities));
+  }, [quantities]);
+
+  const [sizes, setSizes] = useState(() => {
+    const stored1 = localStorage.getItem("sizes");
+    return stored1 !== null ? JSON.parse(stored1) : {};
+  });
+
+  useEffect(() => {
+    localStorage.setItem("sizes", JSON.stringify(sizes));
+  }, [sizes]);
+
+  const [currency, setCurrency] = useState(() => {
+    const stored2 = localStorage.getItem("currency");
+    return stored2 !== null ? JSON.parse(stored2) : "$ USD";
+  });
+
+  useEffect(() => {
+    localStorage.setItem("currency", JSON.stringify(currency));
+  }, [currency]);
 
   const [checkoutData, setCheckoutData] = useState(() => {
     const stored = localStorage.getItem("checkoutData");
@@ -62,32 +77,44 @@ function App() {
     localStorage.setItem("checkoutData", JSON.stringify(checkoutData));
   }, [checkoutData]);
 
-  // Calculate subtotal and initial total based on dummy cart items
-  const subtotal = dummyCartItems.reduce(
-    (sum, item) => sum + item.price * item.quantity,
-    0
+  const [paidShipping, setPaidShipping] = useState(false);
+
+  const subtotal = useMemo(
+    () =>
+      cartItemIds.reduce(
+        (sum, itemId) => sum + clothingData[itemId].price * quantities[itemId],
+        0
+      ),
+    [cartItemIds, quantities]
   );
-  const initialTotal = subtotal; // Before shipping is calculated
 
-  const [freeShipping, setFreeShipping] = useState(true);
+  const total = useMemo(
+    () => subtotal + 4.99 * paidShipping,
+    [subtotal, paidShipping]
+  );
 
-  const sharedData = {
-    provinces: provinces,
-    countries: countries,
-    checkoutData: checkoutData,
-    setCheckoutData: setCheckoutData,
-    clothingData: clothingData,
-    cartItemIds: cartItemIds,
-    setCartItemIds: setCartItemIds,
-    quantities: quantities,
-    setQuantities: setQuantities,
-    sizes: sizes,
-    setSizes: setSizes,
-    currency: currency,
-    setCurrency: setCurrency,
-    freeShipping: freeShipping,
-    setFreeShipping: setFreeShipping,
-  };
+  const sharedData = useMemo(
+    () => ({
+      provinces,
+      countries,
+      checkoutData,
+      setCheckoutData,
+      clothingData,
+      cartItemIds,
+      setCartItemIds,
+      quantities,
+      setQuantities,
+      sizes,
+      setSizes,
+      currency,
+      setCurrency,
+      paidShipping,
+      setPaidShipping,
+      subtotal,
+      total,
+    }),
+    [checkoutData, cartItemIds, quantities, sizes, currency, paidShipping]
+  );
 
   return (
     <Context.Provider value={sharedData}>

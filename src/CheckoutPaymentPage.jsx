@@ -92,7 +92,7 @@ const CheckoutPaymentPage = () => {
             .toUpperCase()}`,
         }));
         navigate("/payment-confirmation");
-        if (sharedData.checkoutData.saveInfo) sharedData.setCheckoutData({});
+        if (!sharedData.checkoutData.saveInfo) sharedData.setCheckoutData({});
         localStorage.removeItem("checkoutData");
         setProcessing(false);
       }, 2000);
@@ -303,17 +303,7 @@ const CheckoutPaymentPage = () => {
                   ? "Processing..."
                   : `Pay now (${
                       sharedData.currency.substring(0, 1) +
-                      convertPrices(
-                        sharedData.freeShipping * 4.99 +
-                          sharedData.cartItemIds.reduce(
-                            (sum, itemId) =>
-                              sum +
-                              sharedData.clothingData[itemId].price *
-                                sharedData.quantities[itemId],
-                            0
-                          ),
-                        sharedData.currency
-                      )
+                      convertPrices(sharedData.total, sharedData.currency)
                     })`}
               </button>
             </div>

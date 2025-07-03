@@ -3,6 +3,7 @@ import "./CartOverlay.css";
 import { useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import Context from "./context";
+import clothingData from "./clothingData.json";
 
 const convertPrices = (price, currency) => {
   if (currency == "$ USD") {
@@ -20,11 +21,6 @@ const CartOverlay = () => {
   const sharedData = useContext(Context);
   const navigate = useNavigate();
 
-  console.log("Clothing data:");
-  console.log(sharedData.clothingData);
-  console.log("Sizes:");
-  console.log(sharedData.sizes);
-
   return (
     <div className="cart-overlay">
       <h2 className="cart-title">
@@ -35,19 +31,17 @@ const CartOverlay = () => {
         {sharedData.cartItemIds.map((itemId, index) => (
           <div className="cart-item" key={index}>
             <div className="cart-item-info">
-              <div className="cart-item-name">
-                {sharedData.clothingData[itemId].title}
-              </div>
+              <div className="cart-item-name">{clothingData[itemId].title}</div>
               <div className="cart-item-price">
                 {sharedData.currency.substring(0, 1) +
                   convertPrices(
-                    sharedData.clothingData[itemId].price,
+                    clothingData[itemId].price,
                     sharedData.currency
                   )}
               </div>
               <div className="size-label">Size:</div>
               <div className="cart-size-buttons">
-                {sharedData.clothingData[itemId].sizes.map((size) => (
+                {clothingData[itemId].sizes.map((size) => (
                   <button
                     key={size}
                     onClick={() => {
@@ -91,13 +85,9 @@ const CartOverlay = () => {
 
                     const temp = x;
                     delete x[itemId];
-                    console.log("Pre-filtered cart item ids:");
-                    console.log(sharedData.cartItemIds);
                     sharedData.setCartItemIds((x) => {
                       return x.filter((id) => id != itemId);
                     });
-                    console.log("Post-filtered cart item ids:");
-                    console.log(sharedData.cartItemIds);
                     delete sharedData.sizes[itemId];
                     return temp;
                   });
@@ -108,8 +98,8 @@ const CartOverlay = () => {
             </div>
 
             <img
-              src={sharedData.clothingData[itemId].image}
-              alt={sharedData.clothingData[itemId].title}
+              src={clothingData[itemId].image}
+              alt={clothingData[itemId].title}
               className="cart-item-image"
             />
           </div>
@@ -125,8 +115,7 @@ const CartOverlay = () => {
               sharedData.cartItemIds.reduce(
                 (sum, itemId) =>
                   sum +
-                  sharedData.clothingData[itemId].price *
-                    sharedData.quantities[itemId],
+                  clothingData[itemId].price * sharedData.quantities[itemId],
                 0
               ),
               sharedData.currency
