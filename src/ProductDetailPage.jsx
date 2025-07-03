@@ -30,89 +30,111 @@ const ProductDetailPage = () => {
 
   return (
     <>
-    <Bar/>
-    <div className="product-detail-page">
-      <div className="image-section">
-        <div className="thumbnails">
-          {clothingData[itemId].gallery.map((thumb, index) => (
-            <img
-              key={index}
-              src={thumb}
-              alt={`Thumbnail ${index + 1}`}
-              className="thumbnail"
-              onClick={() => {
-                setSelectedImageIndex(index);
-              }}
-            />
-          ))}
-        </div>
-        <img
-          src={clothingData[itemId].gallery[selectedImageIndex]}
-          alt="Main Product"
-          className="main-image"
-        />
-      </div>
-      <div className="product-info">
-        <div>
-          <h2 className="product-title">{clothingData[itemId].title}</h2>
-          <p className="product-subtitle">{clothingData[itemId].type}</p>
-        </div>
-
-        <div className="size-block">
-          <h4 className="product-page-size-label">SIZE:</h4>
-          <div className="size-options">
-            {clothingData[itemId].sizes.map((size) => (
-              <button
-                key={size}
-                onClick={() => setSelectedSize(size)}
-                className={`product-page-size-button ${
-                  selectedSize === size ? "active" : ""
-                }`}
-              >
-                {size}
-              </button>
+      <Bar />
+      <div className="product-detail-page">
+        <div className="image-section">
+          <div className="thumbnails">
+            {clothingData[itemId].gallery.map((thumb, index) => (
+              <img
+                key={index}
+                src={thumb}
+                alt={`Thumbnail ${index + 1}`}
+                className="thumbnail"
+                onClick={() => {
+                  setSelectedImageIndex(index);
+                }}
+              />
             ))}
           </div>
+          <img
+            src={clothingData[itemId].gallery[selectedImageIndex]}
+            alt="Main Product"
+            className="main-image"
+          />
         </div>
+        <div className="product-info">
+          <div>
+            <h2 className="product-title">{clothingData[itemId].title}</h2>
+            <p className="product-subtitle">{clothingData[itemId].type}</p>
+          </div>
 
-        <div className="price-block">
-          <p className="price-label">PRICE:</p>
-          <p className="price-value">
-            {sharedData.currency.substring(0, 1) +
-              convertPrices(clothingData[itemId].price, sharedData.currency)}
+          <div className="size-block">
+            <h4 className="product-page-size-label">SIZE:</h4>
+            <div className="size-options">
+              {clothingData[itemId].sizes.map((size) => (
+                <button
+                  key={size}
+                  onClick={() => setSelectedSize(size)}
+                  className={`product-page-size-button ${
+                    selectedSize === size ? "active" : ""
+                  }`}
+                >
+                  {size}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          <div className="price-block">
+            <p className="price-label">PRICE:</p>
+            <p className="price-value">
+              {sharedData.currency.substring(0, 1) +
+                convertPrices(clothingData[itemId].price, sharedData.currency)}
+            </p>
+          </div>
+
+          <button
+            className="add-to-cart-btn"
+            onClick={() => {
+              console.log("item added");
+              sharedData.setCartItems((x) => {
+                let y = [...x];
+                let merged = false;
+                y = y.map(
+                  ({
+                    id: otherItemId,
+                    quantity: otherItemQuantity,
+                    size: otherItemSize,
+                  }) => {
+                    if (
+                      otherItemId == itemId &&
+                      otherItemSize == clothingData[itemId].defaultsize
+                    ) {
+                      merged = true;
+                      return {
+                        id: otherItemId,
+                        quantity: otherItemQuantity + 1,
+                        size: otherItemSize,
+                      };
+                    }
+                    return {
+                      id: otherItemId,
+                      quantity: otherItemQuantity,
+                      size: otherItemSize,
+                    };
+                  }
+                );
+
+                if (!merged) {
+                  y.push({
+                    id: itemId,
+                    size: clothingData[itemId].defaultsize,
+                    quantity: 1,
+                  });
+                }
+                return y;
+              });
+              navigate("/categories/all");
+            }}
+          >
+            ADD TO CART
+          </button>
+
+          <p className="product-description">
+            {clothingData[itemId].description}
           </p>
         </div>
-
-        <button
-          className="add-to-cart-btn"
-          onClick={() => {
-            if (!sharedData.cartItemIds.includes(itemId)) {
-              sharedData.setCartItemIds((x) => [...x, itemId]);
-              console.log(sharedData.cartItemIds);
-              sharedData.setSizes((x) => {
-                return {
-                  ...x,
-                  [itemId]: clothingData[itemId].defaultsize,
-                };
-              });
-              sharedData.setQuantities((x) => {
-                return {
-                  ...x,
-                  [itemId]: 1,
-                };
-              });
-            }
-            navigate("/categories/all");
-          }}
-        >
-          ADD TO CART
-        </button>
-
-        <p className="product-description">
-          {clothingData[itemId].description}
-        </p>
       </div>
-    </div>
     </>
   );
 };

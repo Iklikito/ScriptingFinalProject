@@ -28,37 +28,6 @@ const PaymentConfirmationPage = lazy(() =>
 );
 
 function App() {
-  //const [cartItemIds, setCartItemIds] = useState([]);
-  //const [quantities, setQuantities] = useState({});
-  //const [sizes, setSizes] = useState({});
-
-  const [cartItemIds, setCartItemIds] = useState(() => {
-    const stored0 = localStorage.getItem("cartItemIds");
-    return stored0 !== null ? JSON.parse(stored0) : [];
-  });
-
-  useEffect(() => {
-    localStorage.setItem("cartItemIds", JSON.stringify(cartItemIds));
-  }, [cartItemIds]);
-
-  const [quantities, setQuantities] = useState(() => {
-    const stored1 = localStorage.getItem("quantities");
-    return stored1 !== null ? JSON.parse(stored1) : {};
-  });
-
-  useEffect(() => {
-    localStorage.setItem("quantities", JSON.stringify(quantities));
-  }, [quantities]);
-
-  const [sizes, setSizes] = useState(() => {
-    const stored1 = localStorage.getItem("sizes");
-    return stored1 !== null ? JSON.parse(stored1) : {};
-  });
-
-  useEffect(() => {
-    localStorage.setItem("sizes", JSON.stringify(sizes));
-  }, [sizes]);
-
   const [currency, setCurrency] = useState(() => {
     const stored2 = localStorage.getItem("currency");
     return stored2 !== null ? JSON.parse(stored2) : "$ USD";
@@ -79,21 +48,22 @@ function App() {
 
   const [paidShipping, setPaidShipping] = useState(false);
 
+  const [cartItems, setCartItems] = useState([]);
+
   const subtotal = useMemo(
     () =>
-      cartItemIds.reduce(
-        (sum, itemId) => sum + clothingData[itemId].price * quantities[itemId],
+      cartItems.reduce(
+        (sum, { id: itemId, quantity: itemQuantity, size: itemSize }) =>
+          sum + clothingData[itemId].price * itemQuantity,
         0
       ),
-    [cartItemIds, quantities]
+    [cartItems]
   );
 
   const total = useMemo(
     () => subtotal + 4.99 * paidShipping,
     [subtotal, paidShipping]
   );
-
-  const [cartItems, setCartItems] = useState([]);
 
   const sharedData = useMemo(
     () => ({
@@ -111,7 +81,7 @@ function App() {
       subtotal,
       total,
     }),
-    [checkoutData, cartItems, quantities, sizes, currency, paidShipping]
+    [checkoutData, cartItems, currency, paidShipping]
   );
 
   return (

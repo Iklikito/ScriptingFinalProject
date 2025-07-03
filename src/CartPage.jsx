@@ -20,103 +20,123 @@ const CartPage = () => {
   const params = useParams();
   const category = params.category ? params.category : "all";
 
+  console.log("CLOTHING DATA: ");
+  console.log(clothingData);
+
+  console.log("SHARED DATA:");
+  console.log(sharedData);
+
   return (
     <>
       <Bar category={category} showOverlay={false} setShowOverlay={() => {}} />
       <div className="cart-page">
         <h1 className="cart-page-title">CART</h1>
         <div className="cart-page-body">
-          {sharedData.cartItemIds.map((itemId, index) => (
-            <div className="cart-page-item" key={index}>
-              <div className="cart-page-item-info">
-                <div className="cart-page-item-name">
-                  {clothingData[itemId].title}
-                </div>
-                <div className="cart-page-item-price">
-                  {sharedData.currency.substring(0, 1) +
-                    convertPrices(
-                      clothingData[itemId].price,
-                      sharedData.currency
-                    )}
-                </div>
-                <div className="cart-page-size-label">SIZE:</div>
-                <div className="cart-page-size-buttons">
-                  {clothingData[itemId].sizes.map((size) => (
-                    <button
-                      key={size}
-                      onClick={() => {
-                        sharedData.setSizes((prev) => ({
-                          ...prev,
-                          [itemId]: size,
-                        }));
-                      }}
-                      className={`cart-page-size-button ${
-                        sharedData.sizes[itemId] === size ? "selected" : ""
-                      }`}
-                    >
-                      {size}
-                    </button>
-                  ))}
-                </div>
-              </div>
-              <div className="cart-quantity-controls-and-image">
-                <div className="cart-page-controls">
-                  <button
-                    onClick={() => {
-                      sharedData.setQuantities((x) => ({
-                        ...x,
-                        [itemId]: x[itemId] + 1,
-                      }));
-                    }}
-                  >
-                    +
-                  </button>
-                  <div className="quantity">
-                    {sharedData.quantities[itemId]}
+          {sharedData.cartItems.map(
+            ({ id: itemId, quantity: itemQuantity, size: itemSize }, index) => (
+              <div className="cart-page-item" key={index}>
+                <div className="cart-page-item-info">
+                  <div className="cart-page-item-name">
+                    {clothingData[itemId].title}
                   </div>
-                  <button
-                    onClick={() => {
-                      sharedData.setQuantities((x) => {
-                        if (x[itemId] !== 1) {
-                          return { ...x, [itemId]: x[itemId] - 1 };
-                        }
-                        const newQuantities = { ...x };
-                        delete newQuantities[itemId];
-                        sharedData.setCartItemIds((prev) =>
-                          prev.filter((id) => id !== itemId)
-                        );
-                        sharedData.setSizes((prev) => {
-                          const copy = { ...prev };
-                          delete copy[itemId];
-                          return copy;
-                        });
-                        return newQuantities;
-                      });
-                    }}
-                  >
-                    –
-                  </button>
+                  <div className="cart-page-item-price">
+                    {sharedData.currency.substring(0, 1) +
+                      convertPrices(
+                        clothingData[itemId].price,
+                        sharedData.currency
+                      )}
+                  </div>
+                  <div className="cart-page-size-label">SIZE:</div>
+                  <div className="cart-page-size-buttons">
+                    {clothingData[itemId].sizes.map((size) => (
+                      <button
+                        key={size}
+                        onClick={() => {
+                          sharedData.setCartItems((x) => {
+                            let y = [...x];
+                            y[index] = {
+                              id: itemId,
+                              quantity: itemQuantity,
+                              size: size,
+                            };
+                            return y;
+                          });
+                        }}
+                        className={`cart-page-size-button ${
+                          itemSize === size ? "selected" : ""
+                        }`}
+                      >
+                        {size}
+                      </button>
+                    ))}
+                  </div>
                 </div>
-                <img
-                  src={clothingData[itemId].gallery[0]} // Using the first image from gallery
-                  alt={clothingData[itemId].title}
-                  className="cart-page-item-image"
-                />
-                <div className="image-carousel-buttons">
-                  <button className="carousel-button prev">&lt;</button>
-                  <button className="carousel-button next">&gt;</button>
+                <div className="cart-quantity-controls-and-image">
+                  <div className="cart-page-controls">
+                    <button
+                      onClick={() => {
+                        sharedData.setCartItems((x) => {
+                          let y = [...x];
+                          y[index] = {
+                            id: itemId,
+                            quantity: itemQuantity + 1,
+                            size: itemSize,
+                          };
+                          return y;
+                        });
+                      }}
+                    >
+                      +
+                    </button>
+                    <div className="quantity">
+                      {sharedData.quantities[itemId]}
+                    </div>
+                    <button
+                      onClick={() => {
+                        sharedData.setCartItems((x) => {
+                          let y = [...x];
+                          if (itemQuantity != 1) {
+                            sharedData.setCartItems((x) => {
+                              y[index] = {
+                                id: itemId,
+                                quantity: itemQuantity - 1,
+                                size: itemSize,
+                              };
+                              return y;
+                            });
+                          }
+                          y.splice(index, 1);
+                          return y;
+                        });
+                      }}
+                    >
+                      –
+                    </button>
+                  </div>
+                  <img
+                    src={clothingData[itemId].gallery[0]} // Using the first image from gallery
+                    alt={clothingData[itemId].title}
+                    className="cart-page-item-image"
+                  />
+                  <div className="image-carousel-buttons">
+                    <button className="carousel-button prev">&lt;</button>
+                    <button className="carousel-button next">&gt;</button>
+                  </div>
                 </div>
               </div>
-            </div>
-          ))}
+            )
+          )}
         </div>
         <div className="cart-page-footer">
           <div className="cart-quantity-and-total">
             <div className="cart-total-quantity">
               <span className="quantity-label">Quantity:</span>
               <span className="quantity-value">
-                {sharedData.cartItemIds.reduce(
-                  (sum, itemId) => sum + sharedData.quantities[itemId],
+                {sharedData.cartItems.reduce(
+                  (
+                    sum,
+                    { id: itemId, quantity: itemQuantity, size: itemSize }
+                  ) => sum + itemQuantity,
                   0
                 )}
               </span>
@@ -125,15 +145,7 @@ const CartPage = () => {
               <span className="total-label">Total:</span>
               <span className="total-value">
                 {sharedData.currency.substring(0, 1)}
-                {sharedData.cartItemIds
-                  .reduce(
-                    (sum, itemId) =>
-                      sum +
-                      clothingData[itemId].price *
-                        sharedData.quantities[itemId],
-                    0
-                  )
-                  .toFixed(2)}
+                {sharedData.subtotal}
               </span>
             </div>
           </div>

@@ -86,16 +86,21 @@ const CartOverlay = () => {
                 </div>
                 <button
                   onClick={() => {
-                    if (itemQuantity != 1) {
-                      sharedData.setCartItems((x) => {
-                        x[index] = {
-                          id: itemId,
-                          quantity: itemQuantity - 1,
-                          size: itemSize,
-                        };
-                        return [...x];
-                      });
-                    }
+                    sharedData.setCartItems((x) => {
+                      let y = [...x];
+                      if (itemQuantity != 1) {
+                        sharedData.setCartItems((x) => {
+                          y[index] = {
+                            id: itemId,
+                            quantity: itemQuantity - 1,
+                            size: itemSize,
+                          };
+                          return y;
+                        });
+                      }
+                      y.splice(index, 1);
+                      return y;
+                    });
                   }}
                 >
                   –
