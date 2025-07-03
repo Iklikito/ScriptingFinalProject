@@ -40,13 +40,41 @@ const ClothingCard = ({ itemId, image, title, price, showOverlay }) => {
             console.log("item added");
             e.stopPropagation();
             sharedData.setCartItems((x) => {
-              const y = [...x];
-              y.push({
-                id: itemId,
-                quantity: 1,
-                size: sharedData.clothingData[itemId].defaultsize,
-              });
-              console.log(sharedData.cartItems);
+              let y = [...x];
+              let merged = false;
+              y = y.map(
+                ({
+                  id: otherItemId,
+                  quantity: otherItemQuantity,
+                  size: otherItemSize,
+                }) => {
+                  if (
+                    otherItemId == itemId &&
+                    otherItemSize == clothingData[itemId].defaultsize
+                  ) {
+                    merged = true;
+                    return {
+                      id: itemId,
+                      quantity: otherItemQuantity + 1,
+                      size: otherItemSize,
+                    };
+                  }
+                  return {
+                    id: itemId,
+                    quantity: otherItemQuantity,
+                    size: otherItemSize,
+                  };
+                }
+              );
+
+              if (!merged) {
+                y.push({
+                  id: itemId,
+                  size: clothingData[itemId].defaultsize,
+                  quantity: 1,
+                });
+              }
+
               return y;
             });
           }}
