@@ -89,7 +89,7 @@ const CartPage = () => {
                       +
                     </button>
                     <div className="quantity">
-                      {sharedData.quantities[itemId]}
+                      {sharedData.cartItems[index].quantity}
                     </div>
                     <button
                       onClick={() => {
@@ -145,7 +145,16 @@ const CartPage = () => {
               <span className="total-label">Total:</span>
               <span className="total-value">
                 {sharedData.currency.substring(0, 1)}
-                {sharedData.subtotal}
+                {convertPrices(
+                  sharedData.cartItems.reduce(
+                    (
+                      sum,
+                      { id: itemId, quantity: itemQuantity, size: itemSize }
+                    ) => sum + clothingData[itemId].price * itemQuantity,
+                    0
+                  ),
+                  sharedData.currency
+                )}
               </span>
             </div>
           </div>

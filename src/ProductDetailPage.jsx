@@ -21,7 +21,7 @@ const convertPrices = (price, currency) => {
 const ProductDetailPage = () => {
   const sharedData = useContext(Context);
   const params = useParams();
-  const itemId = params.id;
+  const itemId = Number(params.id);
   const [selectedSize, setSelectedSize] = useState(
     clothingData[itemId].defaultsize
   );
@@ -98,7 +98,7 @@ const ProductDetailPage = () => {
                   }) => {
                     if (
                       otherItemId == itemId &&
-                      otherItemSize == clothingData[itemId].defaultsize
+                      otherItemSize == selectedSize
                     ) {
                       merged = true;
                       return {
@@ -118,7 +118,7 @@ const ProductDetailPage = () => {
                 if (!merged) {
                   y.push({
                     id: itemId,
-                    size: clothingData[itemId].defaultsize,
+                    size: selectedSize,
                     quantity: 1,
                   });
                 }

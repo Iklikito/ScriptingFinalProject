@@ -53,7 +53,44 @@ const CartOverlay = () => {
                     <button
                       key={size}
                       onClick={() => {
-                        console.log("Hi");
+                        itemSize = size;
+                        sharedData.setCartItems((x) => {
+                          let y = [...x];
+                          let merged = false;
+
+                          y = y.map(
+                            (
+                              {
+                                id: otherItemId,
+                                quantity: otherItemQuantity,
+                                size: otherItemSize,
+                              },
+                              otherIndex
+                            ) => {
+                              if (
+                                otherItemId == itemId &&
+                                otherItemSize == size &&
+                                otherIndex != index
+                              ) {
+                                merged = true;
+                                return {
+                                  id: itemId,
+                                  quantity: otherItemQuantity + itemQuantity,
+                                  size: otherItemSize,
+                                };
+                              }
+                              return {
+                                id: otherItemId,
+                                quantity: otherItemQuantity,
+                                size: otherItemSize,
+                              };
+                            }
+                          );
+                          if (merged) {
+                            y.splice(index, 1);
+                          }
+                          return y;
+                        });
                       }}
                       className={`size-button ${
                         size == itemSize ? "selected" : ""
