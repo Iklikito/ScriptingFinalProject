@@ -17,6 +17,8 @@ const convertPrices = (price, currency) => {
   }
 };
 
+console.log(clothingData);
+
 const CartOverlay = () => {
   const sharedData = useContext(Context);
   const navigate = useNavigate();
@@ -24,87 +26,95 @@ const CartOverlay = () => {
   return (
     <div className="cart-overlay">
       <h2 className="cart-title">
-        My Bag, <span>{sharedData.cartItemIds.length} items</span>
+        My Bag, <span>{sharedData.cartItems.length} items</span>
       </h2>
 
       <div className="cart-body">
-        {sharedData.cartItemIds.map((itemId, index) => (
-          <div className="cart-item" key={index}>
-            <div className="cart-item-info">
-              <div className="cart-item-name">{clothingData[itemId].title}</div>
-              <div className="cart-item-name">{clothingData[itemId].type}</div>
-              <div className="cart-item-price">
-                {sharedData.currency.substring(0, 1) +
-                  convertPrices(
-                    clothingData[itemId].price,
-                    sharedData.currency
-                  )}
+        {sharedData.cartItems.map(
+          ({ id: itemId, quantity: itemQuantity, size: itemSize }, index) => (
+            <div className="cart-item" key={index}>
+              <div className="cart-item-info">
+                <div className="cart-item-name">
+                  {clothingData[itemId].title}
+                </div>
+                <div className="cart-item-name">
+                  {clothingData[itemId].type}
+                </div>
+                <div className="cart-item-price">
+                  {sharedData.currency.substring(0, 1) +
+                    convertPrices(
+                      clothingData[itemId].price,
+                      sharedData.currency
+                    )}
+                </div>
+                <div className="size-label">Size:</div>
+                <div className="cart-size-buttons">
+                  {clothingData[itemId].sizes.map((size) => (
+                    <button
+                      key={size}
+                      onClick={() => {
+                        sharedData.setCartItems((x) => {
+                          x[index] = {
+                            id: itemId,
+                            quantity: itemQuantity,
+                            size: size,
+                          };
+                          return x;
+                        });
+                      }}
+                      className={`size-button ${
+                        size == itemSize ? "selected" : ""
+                      }`}
+                    >
+                      {size}
+                    </button>
+                  ))}
+                </div>
               </div>
-              <div className="size-label">Size:</div>
-              <div className="cart-size-buttons">
-                {clothingData[itemId].sizes.map((size) => (
-                  <button
-                    key={size}
-                    onClick={() => {
-                      sharedData.setSizes((x) => {
-                        return { ...x, [itemId]: size };
-                      });
-                    }}
-                    className={`size-button ${
-                      size == sharedData.sizes[itemId] ? "selected" : ""
-                    }`}
-                  >
-                    {size}
-                  </button>
-                ))}
-              </div>
-            </div>
 
-            <div className="cart-controls">
-              <button
-                onClick={() => {
-                  sharedData.setQuantities((x) => {
-                    return {
-                      ...x,
-                      [itemId]: x[itemId] + 1,
-                    };
-                  });
-                }}
-              >
-                +
-              </button>
-              <div className="quantity">{sharedData.quantities[itemId]}</div>
-              <button
-                onClick={() => {
-                  sharedData.setQuantities((x) => {
-                    if (x[itemId] != 1) {
-                      return {
-                        ...x,
-                        [itemId]: x[itemId] - 1,
+              <div className="cart-controls">
+                <button
+                  onClick={() => {
+                    sharedData.setCartItems((x) => {
+                      x[index] = {
+                        id: itemId,
+                        quantity: itemQuantity,
+                        size: itemSize,
                       };
-                    }
-
-                    const temp = x;
-                    delete x[itemId];
-                    sharedData.setCartItemIds((x) => {
-                      return x.filter((id) => id != itemId);
                     });
-                    delete sharedData.sizes[itemId];
-                    return temp;
-                  });
-                }}
-              >
-                –
-              </button>
-            </div>
+                  }}
+                >
+                  +
+                </button>
+                <div className="quantity">
+                  {sharedData.cartItems[itemId].quantity}
+                </div>
+                <button
+                  onClick={() => {
+                    if (itemQuantity != 1) {
+                      sharedData.setCartItems((x) => {
+                        x[index] = {
+                          id: itemId,
+                          quantity: itemQuantity,
+                          size: itemSize,
+                        };
+                        return [...x];
+                      });
+                    }
+                  }}
+                >
+                  –
+                </button>
+              </div>
 
-            <img
-              src={clothingData[itemId].image}
-              alt={clothingData[itemId].title}
-              className="cart-item-image"
-            />
-          </div>
-        ))}
+              <img
+                src={clothingData[itemId].image}
+                alt={clothingData[itemId].title}
+                className="cart-item-image"
+              />
+            </div>
+          )
+        )}
       </div>
 
       <div className="cart-footer">
@@ -113,10 +123,9 @@ const CartOverlay = () => {
           <span>
             {sharedData.currency.substring(0, 1)}
             {convertPrices(
-              sharedData.cartItemIds.reduce(
-                (sum, itemId) =>
-                  sum +
-                  clothingData[itemId].price * sharedData.quantities[itemId],
+              sharedData.cartItems.reduce(
+                (sum, { id: itemId, quantity: itemQuantity, size: itemSize }) =>
+                  sum + clothingData[itemId].price * itemQuantity,
                 0
               ),
               sharedData.currency
@@ -132,12 +141,12 @@ const CartOverlay = () => {
           </button>
           <button
             className={
-              sharedData.cartItemIds.length > 0
+              sharedData.cartItems.length > 0
                 ? "checkout-btn active"
                 : "checkout-btn"
             }
             onClick={() => {
-              if (sharedData.cartItemIds.length > 0) navigate("/shipping-info");
+              if (sharedData.cartItems.length > 0) navigate("/shipping-info");
             }}
           >
             CHECK OUT

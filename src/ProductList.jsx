@@ -37,25 +37,17 @@ const ClothingCard = ({ itemId, image, title, price, showOverlay }) => {
             showOverlay ? "productListCartButton dark" : "productListCartButton"
           }
           onClick={(e) => {
+            console.log("item added");
             e.stopPropagation();
-            if (!sharedData.cartItemIds.includes(itemId)) {
-              sharedData.setCartItemIds((x) => [...x, itemId]);
-              console.log("cart item ids: " + sharedData.cartItemIds);
-              console.log("Added id: " + itemId);
-              console.log("cart item ids: " + sharedData.cartItemIds);
-              sharedData.setSizes((x) => {
-                return {
-                  ...x,
-                  [itemId]: clothingData[itemId].defaultsize,
-                };
+            sharedData.setCartItems((x) => {
+              x.push({
+                id: itemId,
+                quantity: 1,
+                size: sharedData.clothingData[itemId].defaultsize,
               });
-              sharedData.setQuantities((x) => {
-                return {
-                  ...x,
-                  [itemId]: 1,
-                };
-              });
-            }
+              console.log(sharedData.cartItems);
+              return x;
+            });
           }}
         >
           <img

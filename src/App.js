@@ -93,6 +93,8 @@ function App() {
     [subtotal, paidShipping]
   );
 
+  const [cartItems, setCartItems] = useState([]);
+
   const sharedData = useMemo(
     () => ({
       provinces,
@@ -100,12 +102,8 @@ function App() {
       checkoutData,
       setCheckoutData,
       clothingData,
-      cartItemIds,
-      setCartItemIds,
-      quantities,
-      setQuantities,
-      sizes,
-      setSizes,
+      cartItems,
+      setCartItems,
       currency,
       setCurrency,
       paidShipping,

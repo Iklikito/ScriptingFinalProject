@@ -148,9 +148,9 @@ const Bar = ({ category, showOverlay, setShowOverlay }) => {
                   alt="cart"
                   className="navBarCartImage"
                 />
-                {sharedData.cartItemIds.length > 0 && (
+                {sharedData.cartItems.length > 0 && (
                   <div className="cartItemCount">
-                    {sharedData.cartItemIds.length}
+                    {sharedData.cartItems.reduce((acc, x)=> acc + x.quantity,0)}
                   </div>
                 )}
               </button>
