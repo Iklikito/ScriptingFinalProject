@@ -26,11 +26,15 @@ const ProductSummary = ({ shipping, paidAmount }) => {
           ({ id: itemId, quantity: itemQuantity, size: itemSize }) => (
             <div key={itemId} className="summary-item">
               <div className="item-details">
-                <img
-                  src={clothingData[itemId].image}
-                  alt={clothingData[itemId].title}
-                  className="item-image"
-                />
+                <div className="image-wrapper">
+                  <img
+                    src={clothingData[itemId].image}
+                    alt={clothingData[itemId].title}
+                    className="item-image"
+                  />
+                  <div className="quantity-badge">{itemQuantity}</div>
+                </div>
+
                 <div className="item-info">
                   <span className="item-name">
                     {clothingData[itemId].title}

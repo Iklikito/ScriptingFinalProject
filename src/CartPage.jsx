@@ -96,16 +96,20 @@ const CartPage = () => {
                         sharedData.setCartItems((x) => {
                           let y = [...x];
                           if (itemQuantity != 1) {
-                            sharedData.setCartItems((x) => {
-                              y[index] = {
-                                id: itemId,
-                                quantity: itemQuantity - 1,
-                                size: itemSize,
-                              };
-                              return y;
-                            });
+                            y[index] = {
+                              id: itemId,
+                              quantity: itemQuantity - 1,
+                              size: itemSize,
+                            };
+                            return y;
                           }
+                          console.log("Pre-splice");
+                          console.log(index);
+                          console.log(y);
                           y.splice(index, 1);
+                          console.log("Post-splice");
+                          console.log(index);
+                          console.log(y);
                           return y;
                         });
                       }}
